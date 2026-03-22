@@ -14,4 +14,4 @@ Any questions? [Mail me!](mailto:riffpointer@gmail.com)
 
 - [GitHub Profile](https://github.com/{{ site.author.github }})
 - [YouTube](https://youtube.com/@riffpointer)
-- [Instagram](https://instagram.com/@riffpointer)
+- [Instagram](https://instagram.com/riffpointer)
