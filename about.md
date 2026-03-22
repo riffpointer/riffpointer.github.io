@@ -10,9 +10,8 @@ All the source code of the projects I showcase on my channel can be found on thi
 
 Any questions? [Mail me!](mailto:riffpointer@gmail.com)
 
-**Links & Others**
+**Other Links:**
 
-- [E-mail](mailto:{{ site.author.email }})
 - [GitHub Profile](https://github.com/{{ site.author.github }})
 - [YouTube](https://youtube.com/@riffpointer)
 - [Instagram](https://instagram.com/@riffpointer)
