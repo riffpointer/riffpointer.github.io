@@ -359,6 +359,9 @@
     &::-webkit-search-results-decoration {
       display: none;
     }
+    &:focus {
+      filter:brightness(1.2);
+    }
   }
 }
 

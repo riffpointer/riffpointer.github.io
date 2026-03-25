@@ -1,0 +1,16 @@
+[
+  {
+    "name": "RiffPointer's Hub",
+    "description": "Personal website and blog built with Jekyll and Klisé theme.",
+    "id": "riffpointer.github.io",
+    "has_demo": true,
+    "tags": ["jekyll", "blog", "portfolio"]
+  },
+  {
+    "name": "Gurgle",
+    "description": "Best search engine in the world",
+    "id": "gurgle",
+    "has_demo": "true",
+    "tags": ["search","engine","web"]
+  }
+]
