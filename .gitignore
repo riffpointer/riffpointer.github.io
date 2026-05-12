@@ -5,3 +5,4 @@ _site/
 _drafts
 klise-*.gem
 Gemfile.lock
+/tools/project_manager/__pycache__

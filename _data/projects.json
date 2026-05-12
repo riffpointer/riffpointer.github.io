@@ -1,16 +1,86 @@
 [
   {
-    "name": "RiffPointer's Hub",
-    "description": "Personal website and blog built with Jekyll and Klisé theme.",
-    "id": "riffpointer.github.io",
-    "has_demo": true,
-    "tags": ["jekyll", "blog", "portfolio"]
+    "name": "Codex Quota Tracker",
+    "description": "Track quota usage across multiple ChatGPT accounts",
+    "id": "codex-quota-tracker",
+    "has_demo": false,
+    "tags": [
+      "python",
+      "codex",
+      "quota",
+      "tracker"
+    ]
+  },
+  {
+    "name": "Disky Cleaner",
+    "description": "A simple and intelligent disk cleanup utility for Windows, written in Powershell and WinForms",
+    "id": "DiskyCleaner",
+    "has_demo": false,
+    "tags": [
+      "powershell",
+      "csharp",
+      "desktop-app",
+      "diskycleaner"
+    ]
+  },
+  {
+    "name": "RP Media Optimizer Toolkit",
+    "description": "Set of tools to batch downscale and convert media inside a folder to be used in gamedev projects",
+    "id": "rp-media-optimizer-toolkit",
+    "has_demo": false,
+    "tags": [
+      "python",
+      "media",
+      "optimizer",
+      "toolkit"
+    ]
+  },
+  {
+    "name": "Slowed + Reverb",
+    "description": "Python script to create slowed+reverb versions of songs",
+    "id": "slowed-reverb",
+    "has_demo": false,
+    "tags": [
+      "python",
+      "automation",
+      "slowed",
+      "reverb"
+    ]
+  },
+  {
+    "name": "Twaire",
+    "description": "An open source video sharing platform built with MongoDB, ExpressJS, React and Nodejs",
+    "id": "twaire",
+    "has_demo": false,
+    "tags": [
+      "javascript",
+      "react",
+      "express",
+      "web-app",
+      "database",
+      "twaire"
+    ]
+  },
+  {
+    "name": "Seensaw",
+    "description": "Open-source video editor written in Python and PySide6",
+    "id": "seensaw",
+    "has_demo": false,
+    "tags": [
+      "python",
+      "pyside",
+      "desktop-app",
+      "seensaw"
+    ]
   },
   {
     "name": "Gurgle",
-    "description": "Best search engine in the world",
+    "description": "The best search engine you'll ever use",
     "id": "gurgle",
-    "has_demo": "true",
-    "tags": ["search","engine","web"]
+    "has_demo": false,
+    "tags": [
+      "javascript",
+      "gurgle"
+    ]
   }
 ]
