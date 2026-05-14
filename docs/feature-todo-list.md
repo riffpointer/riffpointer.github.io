@@ -26,9 +26,9 @@
 19. [ ] Add a changelog page for visible site updates.
 20. [ ] Add a project status label such as active, paused, archived, or complete.
 21. [ ] Add image lazy loading for content images.
-22. [ ] Add copy buttons for code blocks.
+22. [x] Add copy buttons for code blocks.
 23. [ ] Add table of contents support for long posts.
-24. [ ] Add previous and next navigation for posts.
+24. [x] Add previous and next navigation for posts.
 25. [ ] Add a contact call-to-action on relevant pages.
 
 ## Medium Priority

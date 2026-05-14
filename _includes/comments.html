@@ -24,22 +24,72 @@
 
 <section class="comments">
   {% if giscus_configured %}
-    <div class="giscus"></div>
-    <script src="https://giscus.app/client.js"
-      data-repo="{{ giscus_repo }}"
-      data-repo-id="{{ giscus_repo_id }}"
-      data-category="{{ giscus_category }}"
-      data-category-id="{{ giscus_category_id }}"
-      data-mapping="{{ site.giscus.mapping | default: 'pathname' }}"
-      data-strict="{{ site.giscus.strict | default: 0 }}"
-      data-reactions-enabled="{{ site.giscus.reactions_enabled | default: 1 }}"
-      data-emit-metadata="{{ site.giscus.emit_metadata | default: 0 }}"
-      data-input-position="{{ site.giscus.input_position | default: 'bottom' }}"
-      data-theme="{{ site.giscus.theme | default: 'preferred_color_scheme' }}"
-      data-lang="{{ site.giscus.lang | default: site.lang | default: 'en' }}"
-      data-loading="{{ site.giscus.loading | default: 'lazy' }}"
-      crossorigin="anonymous"
-      async>
+    <div
+      class="giscus"
+      data-giscus-repo="{{ giscus_repo }}"
+      data-giscus-repo-id="{{ giscus_repo_id }}"
+      data-giscus-category="{{ giscus_category }}"
+      data-giscus-category-id="{{ giscus_category_id }}"
+      data-giscus-mapping="{{ site.giscus.mapping | default: 'pathname' }}"
+      data-giscus-strict="{{ site.giscus.strict | default: 0 }}"
+      data-giscus-reactions-enabled="{{ site.giscus.reactions_enabled | default: 1 }}"
+      data-giscus-emit-metadata="{{ site.giscus.emit_metadata | default: 0 }}"
+      data-giscus-input-position="{{ site.giscus.input_position | default: 'bottom' }}"
+      data-giscus-theme="{{ site.giscus.theme | default: 'preferred_color_scheme' }}"
+      data-giscus-lang="{{ site.giscus.lang | default: site.lang | default: 'en' }}"
+      data-giscus-loading="{{ site.giscus.loading | default: 'lazy' }}"
+    ></div>
+    <script>
+      (() => {
+        const target = document.querySelector(".giscus[data-giscus-repo]");
+        if (!target) {
+          return;
+        }
+
+        const loadGiscus = () => {
+          if (target.dataset.giscusLoaded) {
+            return;
+          }
+
+          target.dataset.giscusLoaded = "true";
+          const script = document.createElement("script");
+          script.src = "https://giscus.app/client.js";
+          script.async = true;
+          script.crossOrigin = "anonymous";
+
+          Object.entries(target.dataset).forEach(([key, value]) => {
+            if (!key.startsWith("giscus") || key === "giscusLoaded") {
+              return;
+            }
+
+            const name = key.replace(/^giscus/, "");
+            const attr = name.charAt(0).toLowerCase() +
+              name.slice(1).replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
+            script.setAttribute(`data-${attr}`, value);
+          });
+
+          target.appendChild(script);
+        };
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (!entries.some((entry) => entry.isIntersecting)) {
+                return;
+              }
+
+              observer.disconnect();
+              loadGiscus();
+            },
+            { rootMargin: "600px 0px" }
+          );
+
+          observer.observe(target);
+          return;
+        }
+
+        window.addEventListener("load", loadGiscus, { once: true });
+      })();
     </script>
   {% else %}
     <div class="comments-warning" role="alert" aria-live="polite">

@@ -65,6 +65,99 @@
   }
 }
 
+.post-tools {
+  position: relative;
+  margin-top: 1.25rem;
+  z-index: 3;
+}
+
+.toc {
+  position: relative;
+  display: inline-block;
+}
+
+.toc-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba($gray, 0.25);
+  border-radius: 4px;
+  background: rgba($gray, 0.08);
+  color: $black;
+  font: inherit;
+  font-weight: $bold-weight;
+  line-height: 1;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  transition: none;
+
+  i {
+    font-size: 1em;
+    line-height: 1;
+  }
+}
+
+.toc-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+  max-height: 60vh;
+  overflow: auto;
+  background: $white;
+  border: 1px solid rgba($gray, 0.45);
+  border-radius: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem;
+  transition: none;
+}
+
+.toc-panel-header {
+  display: none;
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.toc-link {
+  color: $text-base-color;
+  text-decoration: none;
+  line-height: 1.35;
+  padding: 0.25rem 0.15rem;
+  border-radius: 4px;
+  transition: none;
+
+  &:hover,
+  &:focus {
+    background: rgba($gray, 0.08);
+    color: $text-link-blue-active;
+  }
+}
+
+.toc-link-h3 {
+  padding-left: 0.8rem;
+}
+
+.toc-link-h4 {
+  padding-left: 1.4rem;
+}
+
+.toc:not(.is-open) .toc-panel[hidden] {
+  display: none;
+}
+
+body.toc-open {
+  overflow: hidden;
+}
+
+html.toc-open {
+  overflow: hidden;
+}
+
 // Post meta
 .post-meta {
   padding-top: 3px;
@@ -97,8 +190,8 @@
 }
 
 // Post content
-.page-content {
-  padding-top: 8px;
+  .page-content {
+    padding-top: 8px;
 
   iframe {
     text-align: center;
@@ -314,5 +407,68 @@
     code {
       font-size: $small-font-size;
     }
+  }
+}
+
+@include media-query($on-mobile) {
+  .post-tools {
+    margin-top: 1rem;
+  }
+
+  .toc {
+    display: block;
+  }
+
+  .toc-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toc-panel {
+    width: auto;
+    max-width: none;
+    position: fixed;
+    inset: 0;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1rem;
+    background: rgba($white, 0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .toc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .toc-panel-title {
+    color: $black;
+    font-weight: $bold-weight;
+    font-size: 1.05em;
+  }
+
+  .toc-close {
+    border: 0;
+    background: transparent;
+    color: $black;
+    cursor: pointer;
+    padding: 0.4rem;
+    line-height: 1;
+    font-size: 1rem;
+    transition: none;
+  }
+
+  .toc-list {
+    gap: 0.4rem;
+  }
+
+  .toc-link {
+    padding: 0.55rem 0.2rem;
+    font-size: 1.05em;
   }
 }

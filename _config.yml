@@ -65,7 +65,7 @@ defaults:
       path: ""
       type: pages
     values:
-      comments: true
+      comments: false
 
 # Jekyll Compose default front matter
 jekyll_compose:
@@ -86,6 +86,7 @@ reading_time_words_per_minute: 200
 # theme: klise
 sass:
   style: compressed
+  sourcemap: never
 
 include:
   - _redirects

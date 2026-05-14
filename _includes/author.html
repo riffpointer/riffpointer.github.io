@@ -2,6 +2,12 @@
   <img
     class="author-avatar"
     src="{{ site.author.avatar }}"
+    srcset="/assets/img/avatar-140.jpg 140w, {{ site.author.avatar }} 800w"
+    sizes="70px"
+    width="70"
+    height="70"
+    decoding="async"
+    fetchpriority="high"
     alt="{{ site.author.username }}"
   />
   <h2 class="author-name">{{ site.author.name }}</h2>

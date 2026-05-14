@@ -155,15 +155,33 @@
   <meta name="theme-color" content="#2c2c2c" />
 
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <link
+    rel="preload"
+    href="/assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="stylesheet"
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+  />
 
   <!-- for mathjax support -->
   {% if page.usemathjax %}
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      TeX: { equationNumbers: { autoNumber: "AMS" } }
-      });
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          tags: 'ams'
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      };
     </script>
-    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   {% endif %}
     
 </head>

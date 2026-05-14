@@ -147,7 +147,9 @@ body[data-theme="dark"] {
         }
 
         input[type="checkbox"]:checked ~ .trigger {
-          background: $dark-black;
+          background-color: rgba($dark-black, 0.72);
+          -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
         }
       }
     }
@@ -174,6 +176,47 @@ body[data-theme="dark"] {
       .category-pill {
         border-color: rgba($dark-gray, 0.35);
         color: $dark-gray;
+      }
+    }
+  }
+
+  .post-tools {
+    .toc-button {
+      background: rgba($dark-white, 0.06);
+      border-color: rgba($dark-gray, 0.25);
+      color: $dark-white;
+    }
+
+    .toc-panel {
+      background: $dark-black;
+      border-color: rgba($dark-white, 0.2);
+    }
+
+    .toc-link {
+      color: $dark-text-base-color;
+
+      &:hover,
+      &:focus {
+        background: rgba($dark-white, 0.06);
+        color: $dark-text-link-blue-active;
+      }
+    }
+
+    .toc-button,
+    .toc-panel,
+    .toc-link,
+    .toc-close {
+      transition: none;
+    }
+
+    @include media-query($on-mobile) {
+      .toc-panel {
+        background: rgba($dark-black, 0.88);
+      }
+
+      .toc-panel-title,
+      .toc-close {
+        color: $dark-white;
       }
     }
   }

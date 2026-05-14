@@ -289,10 +289,10 @@ blockquote {
     max-width: calc(#{$narrow-size} - (#{$spacing-full}));
     padding-right: $spacing-full - 10;
     padding-left: $spacing-full - 10;
+    transition: filter 300ms ease-out;
 
     &.blurry {
-      animation: 0.2s ease-in forwards blur;
-      -webkit-animation: 0.2s ease-in forwards blur;
+      filter: blur(4px);
     }
   }
 }

@@ -71,6 +71,29 @@ layout: compress
             <span hidden itemprop="mainEntityOfPage">{{ page.excerpt }}</span>
           </div>
           {% endif %}
+          <div class="post-tools">
+            <div class="toc" data-toc>
+              <button
+                type="button"
+                class="toc-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="toc-panel"
+              >
+                <i class="bi bi-list" aria-hidden="true"></i>
+                <span>Contents</span>
+              </button>
+              <div class="toc-panel" id="toc-panel" hidden>
+                <div class="toc-panel-header">
+                  <span class="toc-panel-title">Contents</span>
+                  <button type="button" class="toc-close" aria-label="Close contents">
+                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <nav class="toc-list" aria-label="Table of contents"></nav>
+              </div>
+            </div>
+          </div>
         </header>
 
         <div class="page-content" itemprop="articleBody">
@@ -83,7 +106,9 @@ layout: compress
         </div>
       </article>
     
-      {% include comments.html %}
+      {% if page.comments != false %}
+        {% include comments.html %}
+      {% endif %}
 
     </main>
 
