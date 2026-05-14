@@ -1,0 +1,22 @@
+{%- unless page.url == "/" -%}
+  {%- assign crumbs = page.url | remove_first: "/" | split: "/" -%}
+  {%- assign crumb_url = "" -%}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    {%- for crumb in crumbs -%}
+      {%- unless crumb == "" -%}
+        {%- assign crumb_url = crumb_url | append: "/" | append: crumb -%}
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        {%- if forloop.last -%}
+          {%- if page.title -%}
+            <span aria-current="page">{{ page.title | escape }}</span>
+          {%- else -%}
+            <span aria-current="page">{{ crumb | replace: "-", " " | capitalize }}</span>
+          {%- endif -%}
+        {%- else -%}
+          <a href="{{ crumb_url }}/">{{ crumb | replace: "-", " " | capitalize }}</a>
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  </nav>
+{%- endunless -%}

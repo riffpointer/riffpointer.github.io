@@ -1,10 +1,51 @@
-<!-- unnecessary file, however you can still use for comment section, e.g disqus -->
-<script
-  src="https://utteranc.es/client.js"
-  repo="username/reponame"
-  issue-term="pathname"
-  label="✨ comment ✨"
-  theme="github-light"
-  crossorigin="anonymous"
-  async
-></script>
+{% assign giscus_repo = site.giscus.repo | strip %}
+{% assign giscus_repo_id = site.giscus.repo_id | strip %}
+{% assign giscus_category = site.giscus.category | strip %}
+{% assign giscus_category_id = site.giscus.category_id | strip %}
+
+{% assign giscus_configured = false %}
+{% if giscus_repo != empty and giscus_repo_id != empty and giscus_category != empty and giscus_category_id != empty %}
+  {% assign giscus_configured = true %}
+{% endif %}
+
+{% assign missing_giscus_fields = "" | split: "," %}
+{% if giscus_repo == empty %}
+  {% assign missing_giscus_fields = missing_giscus_fields | push: "repo" %}
+{% endif %}
+{% if giscus_repo_id == empty %}
+  {% assign missing_giscus_fields = missing_giscus_fields | push: "repo_id" %}
+{% endif %}
+{% if giscus_category == empty %}
+  {% assign missing_giscus_fields = missing_giscus_fields | push: "category" %}
+{% endif %}
+{% if giscus_category_id == empty %}
+  {% assign missing_giscus_fields = missing_giscus_fields | push: "category_id" %}
+{% endif %}
+
+<section class="comments">
+  {% if giscus_configured %}
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ giscus_repo }}"
+      data-repo-id="{{ giscus_repo_id }}"
+      data-category="{{ giscus_category }}"
+      data-category-id="{{ giscus_category_id }}"
+      data-mapping="{{ site.giscus.mapping | default: 'pathname' }}"
+      data-strict="{{ site.giscus.strict | default: 0 }}"
+      data-reactions-enabled="{{ site.giscus.reactions_enabled | default: 1 }}"
+      data-emit-metadata="{{ site.giscus.emit_metadata | default: 0 }}"
+      data-input-position="{{ site.giscus.input_position | default: 'bottom' }}"
+      data-theme="{{ site.giscus.theme | default: 'preferred_color_scheme' }}"
+      data-lang="{{ site.giscus.lang | default: site.lang | default: 'en' }}"
+      data-loading="{{ site.giscus.loading | default: 'lazy' }}"
+      crossorigin="anonymous"
+      async>
+    </script>
+  {% else %}
+    <div class="comments-warning" role="alert" aria-live="polite">
+      <strong>Comments are unavailable.</strong>
+      Configure Giscus in <code>_config.yml</code>. Missing field{% if missing_giscus_fields.size != 1 %}s{% endif %}:
+      <code>{{ missing_giscus_fields | join: ", " }}</code>
+    </div>
+  {% endif %}
+</section>

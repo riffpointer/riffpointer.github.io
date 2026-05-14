@@ -15,11 +15,14 @@ Gem::Specification.new do |spec|
     f.match(%r{^(_(includes|layouts|sass)/|(assets|LICENSE|README)((\.(txt|md|markdown|yml)|$)))}i)
   end
 
-  spec.add_runtime_dependency "jekyll", "~> 4.1"
-  spec.add_runtime_dependency 'jekyll-feed', '~> 0.13'
+  spec.add_runtime_dependency "jekyll", "~> 4.3.4"
+  spec.add_runtime_dependency 'jekyll-feed', '~> 0.17'
   spec.add_runtime_dependency 'jekyll-sitemap', '~> 1.4'
-  spec.add_runtime_dependency 'jekyll-compose', '~> 0.12.0'
+  spec.add_runtime_dependency 'jekyll-compose', '~> 0.12'
   spec.add_runtime_dependency 'jekyll-postfiles', '~> 3.1'
+  spec.add_runtime_dependency 'csv'
+  spec.add_runtime_dependency 'base64'
+  spec.add_runtime_dependency 'bigdecimal'
 
   spec.add_development_dependency "bundler", "~> 2.1"
 end

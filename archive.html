@@ -3,7 +3,6 @@ title: Archive
 permalink: /archive/
 layout: page
 excerpt: All post.
-comments: false
 ---
 
 <div class="search-article">
@@ -24,6 +23,7 @@ comments: false
   <article class="post-item">
     <h3 class="post-item-title">
       <a href="{{ post.url }}">{{ post.title | escape }}</a>
-    </h3> 
+    </h3>
+    {% include reading_time.html content=post.content class="post-item-reading-time" %}
   </article>
 {%- endfor -%}

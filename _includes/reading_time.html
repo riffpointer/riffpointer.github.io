@@ -1,0 +1,13 @@
+{%- assign words_per_minute = site.reading_time_words_per_minute | default: 200 -%}
+{%- assign text = include.content | strip_html -%}
+{%- assign words = text | number_of_words -%}
+{%- assign characters = text | size -%}
+{%- assign minutes = words | divided_by: words_per_minute -%}
+{%- assign remainder = words | modulo: words_per_minute -%}
+{%- if remainder > 0 -%}
+  {%- assign minutes = minutes | plus: 1 -%}
+{%- endif -%}
+{%- if minutes < 1 -%}
+  {%- assign minutes = 1 -%}
+{%- endif -%}
+<span class="{{ include.class | default: 'reading-time' }}" title="{{ words }} words, {{ characters }} characters" aria-label="{{ minutes }} min read, {{ words }} words, {{ characters }} characters">{{ minutes }} min read</span>

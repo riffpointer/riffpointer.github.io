@@ -25,8 +25,14 @@
     clear: both;
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
+    transform-origin: center;
     opacity: 0.7;
     z-index: 1;
+
+    &.theme-toggle-rotating {
+      animation: theme-toggle-rotate 800ms ease-out;
+    }
+
     &:hover {
       cursor: pointer;
       opacity: 1;
@@ -179,6 +185,16 @@
   }
 }
 
+@keyframes theme-toggle-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
 // Author
 .author {
   margin-top: 6.3rem;
@@ -216,6 +232,32 @@
 }
 
 // Content
+.breadcrumbs {
+  color: $gray;
+  font-size: $small-font-size;
+  line-height: 1.4;
+  margin-top: 2rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $text-link-blue-active;
+    }
+  }
+
+  .breadcrumb-separator {
+    margin: 0 0.45rem;
+  }
+
+  span[aria-current="page"] {
+    color: $black;
+    font-weight: $bold-weight;
+  }
+}
+
 .posts-item-note {
   font-size: $base-font-size;
   font-weight: 700;
@@ -246,6 +288,7 @@
   }
 
   .post-item-title {
+    flex: 1;
     margin: 0;
     border: 0;
     padding: 0;
@@ -261,6 +304,14 @@
         color: $black;
       }
     }
+  }
+
+  .post-item-reading-time {
+    color: $gray;
+    cursor: help;
+    font-size: $small-font-size;
+    margin-left: $spacing-half;
+    white-space: nowrap;
   }
 }
 

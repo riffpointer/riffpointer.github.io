@@ -4,6 +4,12 @@
     padding-left: $spacing-half;
     padding-right: $spacing-half;
   }
+
+  > .breadcrumbs + .page-content {
+    .header {
+      margin-top: 4.2em;
+    }
+  }
 }
 
 // Post title
@@ -22,6 +28,24 @@
       &:hover {
         text-decoration: none;
       }
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .category-pill {
+      border: 1px solid rgba($gray, 0.25);
+      border-radius: 999px;
+      color: $gray;
+      font-size: $small-font-size - 2;
+      font-weight: $bold-weight;
+      line-height: 1;
+      padding: 5px 9px;
+      text-transform: uppercase;
     }
   }
 
@@ -64,6 +88,11 @@
 
   span[itemprop="author"] {
     border-bottom: 1px dotted $light;
+  }
+
+  .reading-time {
+    cursor: help;
+    margin-left: 1.5em;
   }
 }
 
@@ -258,4 +287,32 @@
 
 .post-updated-at {
   font-family: "Ubuntu mono", "monospace";
+}
+
+.comments {
+  margin-top: 4em;
+  padding-top: 2em;
+  border-top: 1px solid $light;
+
+  .giscus {
+    min-height: 120px;
+  }
+
+  .comments-warning {
+    border: 1px solid $light;
+    border-radius: 6px;
+    background: rgba($gray, 0.06);
+    color: $black;
+    padding: 1rem 1.15rem;
+    line-height: 1.5;
+
+    strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    code {
+      font-size: $small-font-size;
+    }
+  }
 }

@@ -21,7 +21,8 @@ excerpt: Sorted article by tags.
       <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
       <h3 class="post-item-title">
         <a href="{{ post.url }}">{{ post.title | escape }}</a>
-      </h3> 
+      </h3>
+      {% include reading_time.html content=post.content class="post-item-reading-time" %}
     </article>
   {%- endfor -%}
 {%- endfor -%}

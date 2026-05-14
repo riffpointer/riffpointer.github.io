@@ -30,10 +30,18 @@ layout: compress
 
   {% include navbar.html %}
   <div class="wrapper post">
+    {% include breadcrumbs.html %}
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="header">
+          {% if page.categories and page.categories != empty %}
+          <div class="categories">
+            {% for category in page.categories %}
+              <span class="category-pill">{{ category }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
           {% if page.tags and page.tags != empty %}
           <div class="tags">
             {% assign tags = page.tags %}
@@ -54,6 +62,7 @@ layout: compress
             <span itemprop="author" itemscope itemtype="https://schema.org/Person">
               <span itemprop="name">{{ site.author.name }}</span>
             </span>
+            {% include reading_time.html content=content class="reading-time" %}
             <time hidden datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateModified">
               {{ page.date | date: "%b %d, %Y" }}
             </time>
@@ -74,9 +83,7 @@ layout: compress
         </div>
       </article>
     
-      {% if page.comments %}
-        {% include comments.html %}
-      {% endif %}
+      {% include comments.html %}
 
     </main>
 

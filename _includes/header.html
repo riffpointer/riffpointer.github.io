@@ -8,8 +8,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#fff" />
   <meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
   <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{
-    site.title | escape }}{% endif %}
+    {% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{
+    site.title }}{% endif %}
   </title>
   <link
     rel="alternate"
@@ -58,15 +58,11 @@
   <meta property="fb:app_id" content="{{ site.fb_appid }}" />
   <meta
     property="og:site_name"
-    content="{% if page.title %}{{ page.title | escape }} | {{
-      site.author.name
-    }}{% else %}{{ site.title | escape }}{% endif %}"
+    content="{{ site.title }}"
   />
   <meta
     property="og:title"
-    content="{% if page.title %}{{ page.title | escape }} | {{
-      site.author.name
-    }}{% else %}{{ site.title | escape }}{% endif %}"
+    content="{% if page.title %}{% if page.layout == 'post' %}Post{% else %}Page{% endif %} - {{ page.title }}{% else %}{{ site.title }}{% endif %}"
   />
   {% if page.location %}
   <meta property="og:type" content="article" />
@@ -104,9 +100,7 @@
   <meta name="twitter:card" content="summary" />
   <meta
     name="twitter:title"
-    content="{% if page.title %}{{ page.title | escape }} | {{
-      site.author.twitter
-    }}{% else %}{{ site.title | escape }}{% endif %}"
+    content="{{ page.title | default: site.title }}"
   />
   <meta
     name="twitter:url"

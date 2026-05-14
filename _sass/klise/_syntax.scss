@@ -59,6 +59,41 @@ pre.highlight, pre {
   // background-color: #1a1b21;
 }
 
+.highlight {
+  position: relative;
+
+  .copy-code-button {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 4px;
+    color: #fbf1c7;
+    cursor: pointer;
+    font-family: $sans-family;
+    font-size: $small-font-size - 2;
+    line-height: 1;
+    opacity: 0;
+    padding: 6px 8px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    transition: opacity 150ms ease-in, background-color 150ms ease-in;
+  }
+
+  &:hover,
+  &:focus-within {
+    .copy-code-button {
+      opacity: 1;
+    }
+  }
+
+  .copy-code-button:hover,
+  .copy-code-button:focus,
+  .copy-code-button.is-copied {
+    background: rgba(255, 255, 255, 0.16);
+    opacity: 1;
+  }
+}
+
 .highlight .err {
   color: #fb4934;
   // background-color: #1a1b21;
