@@ -35,13 +35,6 @@ layout: compress
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="header">
-          {% if page.categories and page.categories != empty %}
-          <div class="categories">
-            {% for category in page.categories %}
-              <span class="category-pill">{{ category }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
           {% if page.tags and page.tags != empty %}
           <div class="tags">
             {% assign tags = page.tags %}

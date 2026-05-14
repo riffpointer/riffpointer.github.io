@@ -1,4 +1,207 @@
 (() => {
+  const normalizePath = (value) => {
+    if (!value) {
+      return "/";
+    }
+
+    try {
+      return new URL(value, window.location.origin).pathname.replace(/\/index\.html$/, "/");
+    } catch (error) {
+      return value;
+    }
+  };
+
+  const buildCommandPaletteItems = () => {
+    const menuLinks = Array.from(document.querySelectorAll(".menu-link")).filter(
+      (link) => link.getAttribute("href")
+    );
+    const items = menuLinks.map((link) => {
+      const isRss = link.classList.contains("rss") || link.getAttribute("href").includes("feed.xml");
+      const title = isRss ? "RSS Feed" : link.textContent.trim();
+      const href = link.getAttribute("href");
+
+      return {
+        title,
+        href,
+        description: isRss ? "Open the RSS feed" : `Go to ${title}`,
+        keywords: [title, href, "navigation", isRss ? "rss" : ""].filter(Boolean),
+      };
+    });
+
+    const searchLink = document.querySelector('a[href="/archive/"]');
+
+    if (searchLink) {
+      items.push({
+        title: "Search archive",
+        href: "/archive/",
+        description: "Open the archive search page",
+        keywords: ["search", "archive", "posts"],
+      });
+    }
+
+    const currentPath = normalizePath(window.location.pathname);
+    return items.filter((item) => normalizePath(item.href) !== currentPath || item.href === "/");
+  };
+
+  const initCommandPalette = () => {
+    const palette = document.getElementById("command-palette");
+    const input = document.getElementById("command-palette-input");
+    const list = document.getElementById("command-palette-list");
+    const empty = palette && palette.querySelector(".command-palette__empty");
+    const openTriggers = Array.from(document.querySelectorAll("[data-command-palette-open]"));
+    const closeTriggers = Array.from(document.querySelectorAll("[data-command-palette-close]"));
+
+    if (!palette || !input || !list || !empty) {
+      return;
+    }
+
+    const items = buildCommandPaletteItems();
+    let activeIndex = 0;
+    let isOpen = false;
+
+    const render = (query = "") => {
+      const normalized = query.trim().toLowerCase();
+      const filtered = normalized
+        ? items.filter((item) =>
+            [item.title, item.href, item.description, ...(item.keywords || [])]
+              .join(" ")
+              .toLowerCase()
+              .includes(normalized)
+          )
+        : items;
+
+      list.innerHTML = "";
+      empty.hidden = filtered.length > 0;
+
+      filtered.forEach((item, index) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.className = "command-palette__item";
+        link.href = item.href;
+        link.dataset.index = String(index);
+        link.innerHTML = `<strong>${item.title}</strong><span>${item.description}</span>`;
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+
+      activeIndex = 0;
+      updateActive(filtered);
+    };
+
+    const updateActive = (filteredItems) => {
+      const links = Array.from(list.querySelectorAll(".command-palette__item"));
+
+      links.forEach((link, index) => {
+        const active = index === activeIndex && filteredItems.length > 0;
+        link.classList.toggle("is-active", active);
+        link.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    };
+
+    const getFilteredItems = () =>
+      Array.from(list.querySelectorAll(".command-palette__item"));
+
+    const openPalette = () => {
+      if (isOpen) {
+        return;
+      }
+
+      isOpen = true;
+      palette.hidden = false;
+      palette.setAttribute("aria-hidden", "false");
+      document.body.classList.add("command-palette-open");
+      render(input.value);
+      window.requestAnimationFrame(() => input.focus());
+    };
+
+    const closePalette = () => {
+      if (!isOpen) {
+        return;
+      }
+
+      isOpen = false;
+      palette.hidden = true;
+      palette.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("command-palette-open");
+      input.value = "";
+    };
+
+    const activateCurrent = () => {
+      const links = getFilteredItems();
+      const current = links[activeIndex];
+
+      if (current) {
+        window.location.href = current.href;
+      }
+    };
+
+    render();
+
+    openTriggers.forEach((trigger) => trigger.addEventListener("click", openPalette));
+    closeTriggers.forEach((trigger) => trigger.addEventListener("click", closePalette));
+
+    palette.addEventListener("click", (event) => {
+      if (event.target === palette || event.target.classList.contains("command-palette__backdrop")) {
+        closePalette();
+      }
+    });
+
+    input.addEventListener("input", () => render(input.value));
+    input.addEventListener("keydown", (event) => {
+      const links = getFilteredItems();
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        activeIndex = links.length ? (activeIndex + 1) % links.length : 0;
+        updateActive(links);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        activeIndex = links.length ? (activeIndex - 1 + links.length) % links.length : 0;
+        updateActive(links);
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+        activateCurrent();
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        closePalette();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const key = event.key.toLowerCase();
+
+      if ((event.metaKey || event.ctrlKey) && key === "k") {
+        event.preventDefault();
+        if (isOpen) {
+          closePalette();
+        } else {
+          openPalette();
+        }
+      }
+
+      if (key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        const target = event.target;
+        if (
+          target instanceof HTMLElement &&
+          (target.tagName === "INPUT" ||
+            target.tagName === "TEXTAREA" ||
+            target.isContentEditable)
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+        openPalette();
+      }
+
+      if (key === "escape") {
+        closePalette();
+      }
+    });
+  };
+
+  initCommandPalette();
+
   // Theme switch
   const body = document.body;
   const lamp = document.getElementById("mode");

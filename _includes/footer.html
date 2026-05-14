@@ -18,6 +18,30 @@
     >
   </small>
 </footer>
+<div class="command-palette" id="command-palette" hidden aria-hidden="true">
+  <div class="command-palette__backdrop" data-command-palette-close></div>
+  <div
+    class="command-palette__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Command palette"
+  >
+    <label class="command-palette__search">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <input
+        id="command-palette-input"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Type to filter links"
+      />
+    </label>
+    <div class="command-palette__body">
+      <p class="command-palette__empty" hidden>No matching destinations.</p>
+      <ul class="command-palette__list" id="command-palette-list"></ul>
+    </div>
+  </div>
+</div>
 <script src="/assets/js/main.js" defer="defer"></script>
 {%- if site.google_analytics -%}
   <!-- Google tag (gtag.js) -->

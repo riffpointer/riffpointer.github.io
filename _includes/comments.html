@@ -40,55 +40,61 @@
       data-giscus-loading="{{ site.giscus.loading | default: 'lazy' }}"
     ></div>
     <script>
-      (() => {
+      (function() {
         const target = document.querySelector(".giscus[data-giscus-repo]");
-        if (!target) {
-          return;
-        }
+        if (!target) return;
+
+        const getTheme = () => document.body.getAttribute("data-theme") === "dark" ? "dark" : "light";
+
+        const updateGiscusTheme = () => {
+          const iframe = document.querySelector("iframe.giscus-frame");
+          if (!iframe) return;
+          iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: getTheme() } } },
+            "https://giscus.app"
+          );
+        };
 
         const loadGiscus = () => {
-          if (target.dataset.giscusLoaded) {
-            return;
-          }
-
+          if (target.dataset.giscusLoaded) return;
           target.dataset.giscusLoaded = "true";
+          target.dataset.giscusTheme = getTheme();
+
           const script = document.createElement("script");
           script.src = "https://giscus.app/client.js";
           script.async = true;
           script.crossOrigin = "anonymous";
 
           Object.entries(target.dataset).forEach(([key, value]) => {
-            if (!key.startsWith("giscus") || key === "giscusLoaded") {
-              return;
-            }
-
+            if (!key.startsWith("giscus") || key === "giscusLoaded") return;
             const name = key.replace(/^giscus/, "");
-            const attr = name.charAt(0).toLowerCase() +
-              name.slice(1).replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
-            script.setAttribute(`data-${attr}`, value);
+            const attr = name.charAt(0).toLowerCase() + name.slice(1).replace(/[A-Z]/g, m => "-" + m.toLowerCase());
+            script.setAttribute("data-" + attr, value);
           });
 
           target.appendChild(script);
         };
 
+        const themeObserver = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+              updateGiscusTheme();
+            }
+          });
+        });
+        themeObserver.observe(document.body, { attributes: true });
+
         if ("IntersectionObserver" in window) {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              if (!entries.some((entry) => entry.isIntersecting)) {
-                return;
-              }
-
-              observer.disconnect();
+          const io = new IntersectionObserver((entries) => {
+            if (entries.some(e => e.isIntersecting)) {
+              io.disconnect();
               loadGiscus();
-            },
-            { rootMargin: "600px 0px" }
-          );
-
-          observer.observe(target);
-          return;
+            }
+          }, { rootMargin: "600px 0px" });
+          io.observe(target);
+        } else {
+          window.addEventListener("load", loadGiscus, { once: true });
         }
-
-        window.addEventListener("load", loadGiscus, { once: true });
       })();
     </script>
   {% else %}

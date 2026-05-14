@@ -14,3 +14,6 @@ Any questions? [Mail me!](mailto:riffpointer@gmail.com)
 - [GitHub Profile](https://github.com/{{ site.author.github }})
 - [YouTube](https://youtube.com/@riffpointer)
 - [Instagram](https://instagram.com/riffpointer)
+
+## Did you know?
+You can open a command palette by pressing <kbd>CTRL+K</kbd> or <kbd>CMD+K</kbd> if you're on a Mac!
