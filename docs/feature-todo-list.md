@@ -10,7 +10,7 @@
 6. [ ] Add social preview metadata for shared pages.
 7. [ ] Add an accessible skip-to-content link.
 8. [ ] Add a sitemap generation workflow.
-9. [ ] Add RSS feed discovery links to the site layout.
+9. [x] Add RSS feed discovery links to the site layout.
 10. [ ] Add a deployment status badge or build health indicator to documentation.
 
 ## High Priority
@@ -43,7 +43,7 @@
 33. [ ] Add Open Graph image generation for posts.
 34. [ ] Add a print-friendly stylesheet for articles.
 35. [ ] Add keyboard shortcut hints for search.
-36. [ ] Add a small command palette for navigation.
+36. [x] Add a small command palette for navigation.
 37. [ ] Add a changelog entry template.
 38. [ ] Add draft preview documentation for unpublished content.
 39. [ ] Add featured tags to the homepage.
@@ -52,7 +52,7 @@
 ## Low Priority
 
 41. [ ] Add theme customization controls.
-42. [ ] Add optional dark mode.
+42. [x] Add optional dark mode.
 43. [ ] Add animated page transitions where they do not harm usability.
 44. [ ] Add visual badges for technologies used in projects.
 45. [ ] Add a random post or project discovery button.
