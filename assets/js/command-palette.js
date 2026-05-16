@@ -8,20 +8,47 @@
     }
   };
 
-  const buildCommandPaletteItems = () => {
-    const dataElement = document.getElementById("command-palette-data");
-    if (!dataElement) return { commands: [], projects: [], posts: [], error: "Data element missing" };
+  let paletteData = null;
+  let isLoadingData = false;
+
+  const buildCommandPaletteItems = async (palette) => {
+    if (paletteData) return paletteData;
+    if (isLoadingData) return null;
+
+    const loadingEl = palette?.querySelector(".command-palette__loading");
+    const errorEl = palette?.querySelector(".command-palette__error");
+    const errorDetail = errorEl?.querySelector(".command-palette__error-detail");
+
+    isLoadingData = true;
+    if (loadingEl) loadingEl.hidden = false;
+    if (errorEl) errorEl.hidden = true;
+
     try {
-      const data = JSON.parse(dataElement.textContent);
-      return {
+      const response = await fetch("/assets/data/command-palette-data.json");
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+      paletteData = {
         commands: data.commands || [],
         projects: data.projects || [],
         posts: data.posts || [],
         error: null
       };
+      
+      // Update global context arrays used by some modules/actions
+      window.projectUrls = paletteData.projects.map(p => p.href);
+      window.pageUrls = paletteData.posts.map(p => p.href);
+
+      return paletteData;
     } catch (e) {
-      console.error("Failed to parse command palette data", e);
+      console.error("Failed to fetch command palette data", e);
+      if (errorEl) {
+        errorEl.hidden = false;
+        if (errorDetail) errorDetail.textContent = `Failed to load data: ${e.message}`;
+      }
       return { commands: [], projects: [], posts: [], error: e.message };
+    } finally {
+      isLoadingData = false;
+      if (loadingEl) loadingEl.hidden = true;
     }
   };
 
@@ -878,7 +905,7 @@
 
     if (!palette || !input || !list || !empty || !error || !body) return;
 
-    const { commands, projects, posts, error: loadError } = buildCommandPaletteItems();
+    let commands = [], projects = [], posts = [], loadError = null;
     let activeIndex = 0, isOpen = false, focusBeforeOpen = null, currentResults = [];
     const focusableSelector = [
       'a[href]',
@@ -964,7 +991,19 @@
       }
     };
 
-    const render = (query = "") => {
+    const render = async (query = "") => {
+      if (!paletteData && !isLoadingData) {
+        const d = await buildCommandPaletteItems(palette);
+        if (d) {
+          commands = d.commands;
+          projects = d.projects;
+          posts = d.posts;
+          loadError = d.error;
+        }
+      }
+
+      if (isLoadingData) return;
+
       if (loadError || (commands.length === 0 && projects.length === 0 && posts.length === 0)) {
         error.hidden = false;
         if (errorDetail) errorDetail.textContent = loadError || "No items found.";
@@ -1147,7 +1186,7 @@
     input.addEventListener("keydown", (event) => {
       const links = Array.from(list.querySelectorAll(".command-palette__item"));
       if (event.key === "ArrowDown") { event.preventDefault(); activeIndex = links.length ? (activeIndex + 1) % links.length : 0; updateActive(links); }
-      else if (event.key === "ArrowUp") { event.preventDefault(); activeIndex = links.length ? (activeIndex - 1 + links.length) % links.length : 0; updateActive(links); }
+      else if (event.key === "ArrowUp") { event.preventDefault(); activeIndex = links.length ? (activeIndex - 1 + links.length) : 0; updateActive(links); }
       else if (event.key === "Enter") { 
         event.preventDefault(); 
         const current = links[activeIndex]; 

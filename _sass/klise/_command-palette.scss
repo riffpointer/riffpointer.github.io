@@ -78,6 +78,36 @@
   }
 }
 
+.command-palette__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: $gray;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: $small-font-size;
+    font-weight: $bold-weight;
+  }
+
+  .spin {
+    display: inline-block;
+    animation: cp-spin 1s linear infinite;
+  }
+}
+
+@keyframes cp-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .command-palette__body {
   height: 480px;
   max-height: 55vh;

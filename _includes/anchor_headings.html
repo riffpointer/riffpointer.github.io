@@ -87,7 +87,7 @@
         {% capture anchor %}{{ anchor }} {{ include.anchorAttrs }}{% endcapture %}
       {% endif %}
 
-      {% capture anchor %}<a {{ anchor }} aria-label="Link to this heading">{{ include.anchorBody | replace: '%heading%', header | default: '#' }}</a>{% endcapture %}
+      {% capture anchor %}<a {{ anchor }} aria-label="Link to this heading">{{ include.anchorBody | replace: '%heading%', header | default: '' }}</a>{% endcapture %}
 
       <!-- In order to prevent adding extra space after a heading, we'll let the 'anchor' value contain it -->
       {% if beforeHeading %}
