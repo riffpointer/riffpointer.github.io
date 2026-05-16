@@ -8,7 +8,7 @@ tags: [github, issues, open-source]
 
 Finding a **"good first issue"** is a great way to start contributing to open source, or if you're just doing it as a fun hobby, it's great as well, either way, this guide will help you find issues on GitHub tagged **"good first issue"**.
 
-## 1. Using GitHub's site-wide search option
+## Using GitHub's site-wide search option {: #github-search}
 
 1. Go to [GitHub's homepage](https://github.com) and make sure you're logged in.
 2. In the top navigation bar, you'll find a search bar, click on it.
@@ -18,7 +18,7 @@ Finding a **"good first issue"** is a great way to start contributing to open so
 6. You can add a date filter condition like `updated:>2024-01-01` to filter out old and possibly dead projects (btw that's not always the case)
 7. You can also use `no:assignee` to filter out issues being worked on by other contributors.
 
-## 2. Using curated aggregator sites
+## Using curated aggregator sites {: #aggregator-sites}
 
 There are many sites built specifically for finding contribution opportunities on GitHub, here are some of the popular ones:
 1. [Good First Issue](https://goodfirstissue.dev/): Curates easy pickings from popular open-source projects

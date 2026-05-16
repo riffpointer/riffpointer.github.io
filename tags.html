@@ -9,15 +9,15 @@ excerpt: Sorted article by tags.
   <a class="tag-item" href="#">all</a>
   {%- for tag in site.tags -%} 
     {% capture name %}{{ tag | first }}{% endcapture %}
-    <a class="tag-item" href="#{{name}}">{{ name }}</a> 
+    <a class="tag-item" href="#{{ name | slugify }}">{{ name }}</a> 
   {%- endfor -%}
 </div>
 
 {%- for tag in site.tags -%}
   {%- capture name -%}{{ tag | first }}{%- endcapture -%}
-  <h2 id="{{ name }}">{{ name | upcase }}</h2>
+  <h2 id="{{ name | slugify }}">{{ name | upcase }}</h2>
   {%- for post in site.tags[name] -%}
-    <article class="post-item" id="results-container">
+    <article class="post-item">
       <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
       <h3 class="post-item-title">
         <a href="{{ post.url }}">{{ post.title | escape }}</a>
