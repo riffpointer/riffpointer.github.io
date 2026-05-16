@@ -1,29 +1,45 @@
-{% assign related_posts = '' | split: '' %}
-{% assign discovery_label = '' %}
-{% assign primary_series = page.series | default: '' %}
+{% assign related_posts = "" | split: "" %}
+{% assign discovery_label = "" %}
+{% assign primary_series = page.series %}
 {% assign primary_category = page.categories | first %}
 {% assign primary_tag = page.tags | first %}
 
-{% if primary_series != empty %}
-  {% assign related_posts = site.posts | where_exp: "item", "item.series == primary_series and item.url != page.url" %}
+{% if primary_series %}
+  {% for post in site.posts %}
+    {% if post.series == primary_series and post.url != page.url %}
+      {% assign related_posts = related_posts | push: post %}
+    {% endif %}
+  {% endfor %}
   {% assign discovery_label = "More in this series" %}
 {% elsif primary_category %}
-  {% assign related_posts = site.posts | where_exp: "item", "item.categories contains primary_category and item.url != page.url" %}
+  {% for post in site.posts %}
+    {% if post.categories contains primary_category and post.url != page.url %}
+      {% assign related_posts = related_posts | push: post %}
+    {% endif %}
+  {% endfor %}
   {% assign discovery_label = "More in this category" %}
 {% elsif primary_tag %}
-  {% assign related_posts = site.posts | where_exp: "item", "item.tags contains primary_tag and item.url != page.url" %}
+  {% for post in site.posts %}
+    {% if post.tags contains primary_tag and post.url != page.url %}
+      {% assign related_posts = related_posts | push: post %}
+    {% endif %}
+  {% endfor %}
   {% assign discovery_label = "More on this topic" %}
 {% endif %}
 
-{% if related_posts == empty %}
-  {% assign related_posts = site.posts | where_exp: "item", "item.url != page.url" %}
+{% if related_posts.size == 0 %}
+  {% for post in site.posts %}
+    {% if post.url != page.url %}
+      {% assign related_posts = related_posts | push: post %}
+    {% endif %}
+  {% endfor %}
   {% assign discovery_label = "More from the archive" %}
 {% endif %}
 
-{% if related_posts != empty %}
-<section class="post-discovery" aria-labelledby="post-discovery-title">
+{% if related_posts.size > 0 %}
+<section class="post-discovery">
   <div class="post-discovery__header">
-    <h2 class="post-discovery__title" id="post-discovery-title">{{ discovery_label }}</h2>
+    <h2 class="post-discovery__title">{{ discovery_label }}</h2>
     <a class="post-discovery__link" href="/archive/">Archive</a>
   </div>
   <div class="post-discovery__list">
