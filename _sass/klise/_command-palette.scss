@@ -78,34 +78,47 @@
   }
 }
 
-.command-palette__loading {
+.command-palette__loading,
+.command-palette__empty,
+.command-palette__error {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 3rem 1.5rem;
   color: $gray;
+  text-align: center;
 
-  i {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  &[hidden] {
+    display: none !important;
+  }
+
+  i, svg {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.8;
   }
 
   p {
     margin: 0;
-    font-size: $small-font-size;
+    font-size: 1.05rem;
     font-weight: $bold-weight;
-  }
-
-  .spin {
-    display: inline-block;
-    animation: cp-spin 1s linear infinite;
+    opacity: 0.9;
   }
 }
 
-@keyframes cp-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.command-palette__error {
+  color: #ff4444;
+  
+  .command-palette__error-detail {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: $small-font-size;
+    opacity: 0.7;
+    font-family: $mono-family;
+  }
 }
 
 .command-palette__body {
@@ -247,70 +260,6 @@ button.command-palette__item,
   text-align: left;
   text-decoration: none;
   min-width: 0;
-}
-
-.command-palette__empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 40px 24px;
-  color: $gray;
-  opacity: 0.8;
-  text-align: center;
-  animation: fadeIn 300ms linear;
-
-  &[hidden] {
-    display: none !important;
-  }
-
-  svg {
-    margin-bottom: 15px;
-  }
-
-  p {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  body[data-theme="dark"] & {
-    color: $dark-gray;
-  }
-}
-
-.command-palette__error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: $gray;
-  gap: 12px;
-  opacity: 0.8;
-
-  &[hidden] {
-    display: none !important;
-  }
-
-  i {
-    font-size: 2.5rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .command-palette__error-detail {
-    font-size: 0.8rem;
-    opacity: 0.6;
-    max-width: 80%;
-  }
-
-  body[data-theme="dark"] & {
-    color: $dark-gray;
-  }
 }
 
 .command-palette__calculator {

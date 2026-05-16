@@ -1002,7 +1002,14 @@
         }
       }
 
-      if (isLoadingData) return;
+      const loadingEl = palette.querySelector(".command-palette__loading");
+      if (isLoadingData) {
+        if (loadingEl) loadingEl.hidden = false;
+        list.innerHTML = "";
+        return;
+      } else {
+        if (loadingEl) loadingEl.hidden = true;
+      }
 
       if (loadError || (commands.length === 0 && projects.length === 0 && posts.length === 0)) {
         error.hidden = false;

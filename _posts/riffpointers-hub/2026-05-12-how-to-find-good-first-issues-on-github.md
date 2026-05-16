@@ -6,34 +6,34 @@ categories: [github, issues, open-source]
 tags: [github, issues, open-source]
 ---
 
-Finding a **"good first issue"** is a great way to start contributing to open source, or if you're just doing it as a fun hobby, it's great as well, either way, this guide will help you find issues on GitHub tagged **"good first issue"**.
+Contributing to open source requires finding a suitable entry point. This guide details how to locate GitHub issues tagged as a **"good first issue"**; it assumes you prioritize functional code over more social hobbies.
 
-## Using GitHub's site-wide search option {: #github-search}
+## Using GitHub Search
 
-1. Go to [GitHub's homepage](https://github.com) and make sure you're logged in.
-2. In the top navigation bar, you'll find a search bar, click on it.
-3. Type `label:"good first issue" is:open` in the search bar and press <kbd>Enter</kbd> to search.
-4. GitHub will show a list of issues tagged with **"good first issue"** from all public repos.
-5. Append `language:<your language>` (e.g `language:python`) to the search term to filter out repositories using that language only.
-6. You can add a date filter condition like `updated:>2024-01-01` to filter out old and possibly dead projects (btw that's not always the case)
-7. You can also use `no:assignee` to filter out issues being worked on by other contributors.
+1. Navigate to [GitHub](https://github.com) and log in.
+2. Locate the search bar in the top navigation menu.
+3. Input `label:"good first issue" is:open` and press <kbd>Enter</kbd>.
+4. GitHub returns a list of matching issues from public repositories.
+5. Append `language:<your language>` (e.g. `language:python`) to filter by programming language.
+6. Apply a date filter such as `updated:>2024-01-01` to exclude stale projects. Projects without recent activity rarely welcome new contributors.
+7. Include `no:assignee` to find unclaimed issues.
 
-## Using curated aggregator sites {: #aggregator-sites}
+## Using Aggregator Sites
 
-There are many sites built specifically for finding contribution opportunities on GitHub, here are some of the popular ones:
-1. [Good First Issue](https://goodfirstissue.dev/): Curates easy pickings from popular open-source projects
-2. [Up For Grabs](https://up-for-grabs.net/): A massive list of projects that have tasks specifically for new contributors.
-3. [First Timers Only](https://www.firsttimersonly.com/): Aggregates projects that actively want help and guide you through the process.
-4. [Good First Issues](https://goodfirstissues.com/): Features a live feed of the latest beginner-friendly issues.
+Several platforms aggregate beginner-friendly issues:
+1. [Good First Issue](https://goodfirstissue.dev/): Selects tasks from prominent repositories.
+2. [Up For Grabs](https://up-for-grabs.net/): Catalogs projects with tasks designated for new contributors.
+3. [First Timers Only](https://www.firsttimersonly.com/): Lists projects offering explicit guidance.
+4. [Good First Issues](https://goodfirstissues.com/): Provides a feed of current issues.
 
-## Practicing open-source contributions
+## Practicing Contributions
 
-If you've never made a Pull Request before, use a "sandbox" repository to learn the workflow without the pressure of a real project. You can lend your first contributions to repositories that are built specifically for welcoming new contributors and educating them about how open-source contribution works, such as [First Contributions](https://github.com/firstcontributions/first-contributions). This repository provides a hands-on tutorial that walks you through forking, cloning, and submitting your first PR.
+New contributors can use sandbox repositories to practice workflows. [First Contributions](https://github.com/firstcontributions/first-contributions) offers a tutorial for forking, cloning, and submitting a pull request. This allows for experimentation without the risk of public rejection by a maintainer.
 
-Also, always read the `CONTRIBUTING.md` file in the repo for specific setup and coding standards, make sure to not miss this step or you'll be in a room full of angry project maintainers!
+Consult the `CONTRIBUTING.md` file in any repository to understand specific setup requirements and coding standards. Ignoring these guidelines ensures a prompt, possibly unpleasant, interaction with a maintainer.
 
-It's also a good practice to comment first, i.e commenting on an issue with "I'd like to work on this, can I be assigned?", or a similar request, as it will avoid duplicated effort, which can waste your precious time.
+Request assignment by commenting on an issue before beginning work. This prevents redundant efforts and clarifies intent; it also ensures your labor remains productive.
 
-If you learned something new from this article, make sure to *share this with your friends* as well! 
+If you liked reading this article, consider reading other articles from the "**More from the archive"** section below!
 
-***Thanks for reading!***
+> **This post was re-written by an LLM to be more clear and concise.** I write articles then use LLMs to straighten them up a bit so it's easier to read and flows much more neutrally.

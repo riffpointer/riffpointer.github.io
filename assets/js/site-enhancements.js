@@ -70,25 +70,124 @@
   }
 
   document.querySelectorAll(".highlight").forEach((h) => {
-    const pre = h.querySelector(".rouge-code pre") || h.querySelector("pre");
-    const wrap = h.closest(".highlighter-rouge") || h;
-    if (!pre || wrap.querySelector(".copy-code-button")) return;
+    // Robustly find the pre element
+    let pre = h.tagName === "PRE" ? h : h.querySelector("pre");
+    if (!pre && h.classList.contains("rouge-code")) {
+      pre = h.querySelector("pre");
+    }
+    
+    // Find the best container for the button
+    const wrap = h.closest("div.highlighter-rouge, figure.highlight") || (pre ? pre.parentElement : h);
+    if (!pre || !wrap || wrap.querySelector(".copy-code-button")) return;
+    
+    // Ensure the container is ready for absolute positioning
+    if (window.getComputedStyle(wrap).position === "static") {
+      wrap.style.position = "relative";
+    }
+
     const b = document.createElement("button");
     b.className = "copy-code-button";
     b.type = "button";
-    b.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i><span>Copy</span>';
+    b.title = "Copy";
+    b.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i>';
+    let copyCount = 0;
+    let lastCopyTime = 0;
     b.addEventListener("click", async () => {
-      try {
-        await copyText(pre.innerText.trimEnd());
-        b.innerHTML = '<i class="bi bi-check2" aria-hidden="true"></i><span>Copied</span>';
-        b.classList.add("is-copied");
-      } catch (e) {
-        b.innerHTML = '<i class="bi bi-exclamation-circle" aria-hidden="true"></i><span>Failed</span>';
+      const now = Date.now();
+      
+      // Debounce only the clipboard instruction (1s)
+      if (now - lastCopyTime > 1000) {
+        try {
+          await copyText(pre.innerText.trimEnd());
+          lastCopyTime = now;
+        } catch (e) {
+          console.error("Copy failed", e);
+          b.innerHTML = '<i class="bi bi-exclamation-circle" aria-hidden="true"></i>';
+          b.title = "Failed";
+          return;
+        }
       }
+
+      copyCount++;
+      
+      // Get absolute coordinates
+      const rect = h.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      
+      // Get border widths to adjust relative positioning
+      const wrapStyle = window.getComputedStyle(wrap);
+      const borderLeft = parseFloat(wrapStyle.borderLeftWidth) || 0;
+      const borderTop = parseFloat(wrapStyle.borderTopWidth) || 0;
+      
+      // Destination is exactly where the button is positioned
+      const destTop = b.offsetTop;
+      const destLeft = b.offsetLeft;
+      
+      // Initial state relative to wrapper's internal coordinate system
+      // Align exactly with the code block's position
+      const startTop = rect.top - wrapRect.top - borderTop;
+      const startLeft = rect.left - wrapRect.left - borderLeft;
+      
+      // Screenshot animation
+      const snapshot = h.cloneNode(true);
+      const aniWrap = document.createElement("div");
+      aniWrap.className = "copy-screenshot-snapshot";
+      
+      // Set initial state and destination variables
+      aniWrap.style.width = `${rect.width}px`;
+      aniWrap.style.height = `${rect.height}px`;
+      aniWrap.style.top = `${startTop}px`;
+      aniWrap.style.left = `${startLeft}px`;
+      aniWrap.style.setProperty("--dest-top", `${destTop}px`);
+      aniWrap.style.setProperty("--dest-left", `${destLeft}px`);
+
+      // Lock snapshot content to original size to prevent reflow during shrink
+      snapshot.style.width = `${rect.width}px`;
+      snapshot.style.height = `${rect.height}px`;
+      snapshot.style.margin = "0";
+      
+      // Calculate dynamic scale factors
+      const scaleX = 28 / rect.width;
+      const scaleY = 28 / rect.height;
+      aniWrap.style.setProperty("--scale-x", scaleX);
+      aniWrap.style.setProperty("--scale-y", scaleY);
+
+      aniWrap.appendChild(snapshot);
+      
+      // Independent flash element
+      const flash = document.createElement("div");
+      flash.className = "copy-flash-overlay";
+      
+      wrap.appendChild(flash);
+      wrap.appendChild(aniWrap);
+      
+      // Force a style calculation
+      void aniWrap.offsetWidth;
+      
+      // Trigger animation
+      requestAnimationFrame(() => {
+        aniWrap.classList.add("is-shrinking");
+      });
+
+      // Cleanup and button success state
+      setTimeout(() => flash.remove(), 240);
+      setTimeout(() => {
+        aniWrap.remove();
+        // Button state - show after animation ends
+        b.innerHTML = '<i class="bi bi-check2" aria-hidden="true"></i>';
+        b.title = "Copied";
+        b.classList.add("is-copied");
+      }, 800);
+
       window.setTimeout(() => {
-        b.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i><span>Copy</span>';
-        b.classList.remove("is-copied");
-      }, 1600);
+        copyCount--;
+        if (copyCount <= 0) {
+          copyCount = 0;
+          b.innerHTML = '<i class="bi bi-copy" aria-hidden="true"></i>';
+          b.title = "Copy";
+          b.classList.remove("is-copied");
+        }
+      }, 2400); 
     });
     wrap.appendChild(b);
   });
