@@ -5,18 +5,18 @@
 {% assign primary_tag = page.tags | first %}
 
 {% if primary_series != empty %}
-  {% assign related_posts = site.posts | where_exp: "post", "post.series == primary_series and post.url != page.url" %}
+  {% assign related_posts = site.posts | where_exp: "item", "item.series == primary_series and item.url != page.url" %}
   {% assign discovery_label = "More in this series" %}
 {% elsif primary_category %}
-  {% assign related_posts = site.posts | where_exp: "post", "post.categories contains primary_category and post.url != page.url" %}
+  {% assign related_posts = site.posts | where_exp: "item", "item.categories contains primary_category and item.url != page.url" %}
   {% assign discovery_label = "More in this category" %}
 {% elsif primary_tag %}
-  {% assign related_posts = site.posts | where_exp: "post", "post.tags contains primary_tag and post.url != page.url" %}
+  {% assign related_posts = site.posts | where_exp: "item", "item.tags contains primary_tag and item.url != page.url" %}
   {% assign discovery_label = "More on this topic" %}
 {% endif %}
 
 {% if related_posts == empty %}
-  {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+  {% assign related_posts = site.posts | where_exp: "item", "item.url != page.url" %}
   {% assign discovery_label = "More from the archive" %}
 {% endif %}
 
