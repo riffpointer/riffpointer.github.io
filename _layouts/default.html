@@ -5,7 +5,8 @@ layout: compress
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
 {% include header.html %}
 
-<body data-theme="{{ site.mode }}" class="notransition fonts-loading">
+  <body data-theme="{{ site.mode }}" class="notransition fonts-loading">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <script>
     (function() {
@@ -39,9 +40,11 @@ layout: compress
   {% include navbar.html %}
   <div class="wrapper">
     {% include breadcrumbs.html %}
-    {% include author.html %}
-    <main aria-label="Content">
-      {{ content }}
+    {%- unless page.layout == 'home' -%}
+      {% include author.html %}
+    {%- endunless -%}
+    <main id="main-content" aria-label="Content">
+      {{ content | replace: '<img ', '<img loading="lazy" decoding="async" ' }}
     </main>
     {% include footer.html %}
   </div>

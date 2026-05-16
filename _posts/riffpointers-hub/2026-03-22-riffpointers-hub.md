@@ -3,6 +3,7 @@ layout: post
 title:  "RiffPointer's Hub"
 date:   2026-03-22 10:00:00 +05:30
 categories: [riffpointer, website]
+tags: [riffpointer, website]
 ---
 
 Hola! Welcome to RiffPointer's Hub. You'll find articles and detailed explanations on topics I cover on my YouTube videos here.

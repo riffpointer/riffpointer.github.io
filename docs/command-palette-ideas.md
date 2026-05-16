@@ -40,3 +40,22 @@ A list of potential features, links, and minigames to be added to the command pa
 - **RSS Feed Reader**: A small pane showing headlines from favorite sites.
 - **Daily Goal Tracker**: A simple checklist that resets daily.
 - **Random Wikipedia Article**: For quick learning.
+
+## Cool & Unusual Features
+DONE **Matrix Mode**: Trigger a falling green code rain effect across the background. - Triggered by "matrix" keyword. instantly applies to page background (not as an overlay). adapts to light and dark theme nicely.
+
+- **X-Ray / Debug View**: Toggle outlines on every container to see the site's skeleton (Z-index, Flex/Grid lines). - outlines bounding boxes and makes the site look like a blueprint. triggered by domdebug command
+
+- **Mechanical Keyboard Sounds**: Toggle "clicky" sound effects for every keypress on the site. - enabled by typing mechkey in anywhere in the site (if a textbox is in focus then its not taken in account). When enabled, show a small background-less text popup from right side, rotated 90 degrees anticlockwise
+
+- **Vaporwave Theme**: A special command to swap CSS variables to a neon pink/cyan/purple palette instantly.
+
+- **Focus Mode**: Hide everything except the main content for distraction-free reading. - triggered by focusmode command
+
+- **Digital Graffiti**: A way to leave a "digital note" or drawing on the page that persists for the session. - allows one to highlight pieces of text and scribble on the page. - show a small toolbox at the bottom - use bootstrap icons - triggered by "pagnote"
+
+- **Lofi Radio**: Start a background stream of low-fidelity beats for browsing.
+- **Konami Code Trigger**: Type the Konami code into the palette to unlock a secret theme or game.
+- **Teleport**: Jump to a completely random blog post or project.
+- **Terminal UI**: Transform the command palette into a full-blown retro terminal for site navigation.
+- **Theme Sync Burst**: A command that syncs with OS theme and triggers a confetti burst.

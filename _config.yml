@@ -36,7 +36,7 @@ author:
   avatar: /assets/img/avatar.jpg # change with your own avatar
 
 # URL settings
-url: "https://riffpointer.github.io/" #
+url: "https://riffpointer.github.io" #
 baseurl:
 permalink: /:title/
 google_analytics: # leave it blank if not wish
@@ -52,6 +52,9 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
 
 # Default front matter
 defaults:
@@ -93,6 +96,8 @@ include:
   - .htaccess
 
 exclude:
+  - docs
+  - tools
   - CNAME
   - Gemfile
   - Gemfile.lock

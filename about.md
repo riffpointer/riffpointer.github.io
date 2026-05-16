@@ -16,4 +16,4 @@ Any questions? [Mail me!](mailto:riffpointer@gmail.com)
 - [Instagram](https://instagram.com/riffpointer)
 
 ## Did you know?
-You can open a command palette by pressing <kbd>CTRL+K</kbd> or <kbd>CMD+K</kbd> if you're on a Mac!
+You can open a <button type="button" class="command-palette-trigger" data-command-palette-open>command palette</button> by pressing <kbd>CTRL+K</kbd> or <kbd>CMD+K</kbd> if you're on a Mac!

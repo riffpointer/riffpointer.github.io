@@ -1,0 +1,41 @@
+{% assign related_posts = '' | split: '' %}
+{% assign discovery_label = '' %}
+{% assign primary_series = page.series | default: '' %}
+{% assign primary_category = page.categories | first %}
+{% assign primary_tag = page.tags | first %}
+
+{% if primary_series != empty %}
+  {% assign related_posts = site.posts | where_exp: "post", "post.series == primary_series and post.url != page.url" %}
+  {% assign discovery_label = "More in this series" %}
+{% elsif primary_category %}
+  {% assign related_posts = site.posts | where_exp: "post", "post.categories contains primary_category and post.url != page.url" %}
+  {% assign discovery_label = "More in this category" %}
+{% elsif primary_tag %}
+  {% assign related_posts = site.posts | where_exp: "post", "post.tags contains primary_tag and post.url != page.url" %}
+  {% assign discovery_label = "More on this topic" %}
+{% endif %}
+
+{% if related_posts == empty %}
+  {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+  {% assign discovery_label = "More from the archive" %}
+{% endif %}
+
+{% if related_posts != empty %}
+<section class="post-discovery" aria-labelledby="post-discovery-title">
+  <div class="post-discovery__header">
+    <h2 class="post-discovery__title" id="post-discovery-title">{{ discovery_label }}</h2>
+    <a class="post-discovery__link" href="/archive/">Archive</a>
+  </div>
+  <div class="post-discovery__list">
+    {% for related_post in related_posts limit: 4 %}
+    <article class="post-item post-discovery__item">
+      <span class="post-item-date">{{ related_post.date | date: "%b %d, %Y" }}</span>
+      <h3 class="post-item-title">
+        <a href="{{ related_post.url | relative_url }}">{{ related_post.title | escape }}</a>
+      </h3>
+      {% include reading_time.html content=related_post.content class="post-item-reading-time" %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

@@ -1,13 +1,22 @@
 <div class="navbar" role="navigation">
   <nav class="menu">
-    <input type="checkbox" id="menu-trigger" class="menu-trigger" />
-    <label for="menu-trigger">
-      <span class="menu-icon">
+    <input
+      type="checkbox"
+      id="menu-trigger"
+      class="menu-trigger"
+      aria-label="Open menu"
+      aria-controls="menu-panel"
+      aria-expanded="false"
+    />
+    <label for="menu-trigger" aria-hidden="true">
+      <span class="menu-icon" aria-hidden="true">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 512 512"
+          aria-hidden="true"
+          focusable="false"
         >
           <path
             d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
@@ -15,15 +24,21 @@
         </svg>
       </span>
     </label>
-    <a id="mode">
+    <button
+      id="mode"
+      type="button"
+      aria-label="{% if site.mode == 'dark' %}Switch to light theme{% else %}Switch to dark theme{% endif %}"
+      aria-pressed="{% if site.mode == 'dark' %}true{% else %}false{% endif %}"
+    >
       <svg
         class="mode-sunny"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 512 512"
+        aria-hidden="true"
+        focusable="false"
       >
-        <title>LIGHT</title>
         <line
           x1="256"
           y1="48"
@@ -93,8 +108,9 @@
         width="24"
         height="24"
         viewBox="0 0 512 512"
+        aria-hidden="true"
+        focusable="false"
       >
-        <title>DARK</title>
         <line
           x1="256"
           y1="48"
@@ -158,8 +174,8 @@
           style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"
         />
       </svg>
-    </a>
-    <div class="trigger">
+    </button>
+    <div class="trigger" id="menu-panel">
       <div class="trigger-container">
         {%- assign url = page.url -%}
         {%- assign menus = site.data.menus -%}
@@ -192,8 +208,9 @@
             height="17"
             viewBox="0 0 512 512"
             fill="#ED812E"
+            aria-hidden="true"
+            focusable="false"
           >
-            <title>RSS</title>
             <path
               d="M108.56,342.78a60.34,60.34,0,1,0,60.56,60.44A60.63,60.63,0,0,0,108.56,342.78Z"
             />

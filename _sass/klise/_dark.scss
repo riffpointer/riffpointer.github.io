@@ -53,13 +53,6 @@ body[data-theme="dark"] {
     }
   }
 
-  // Syntax
-  code {
-    &.highlighter-rouge {
-      background-color: $dark-light;
-    }
-  }
-
   // kbd tag
   kbd {
     border-color: $dark-light;
@@ -124,7 +117,7 @@ body[data-theme="dark"] {
   .navbar {
     border-color: $dark-light;
     .menu {
-      a#mode {
+      #mode {
         .mode-sunny {
           display: block;
         }
@@ -152,6 +145,21 @@ body[data-theme="dark"] {
           backdrop-filter: blur(6px);
         }
       }
+    }
+  }
+
+  .skip-link {
+    border-color: $dark-light;
+    background: $dark-black;
+    color: $dark-white;
+  }
+
+  .command-palette-trigger {
+    color: $dark-text-link-blue;
+
+    &:hover,
+    &:focus-visible {
+      color: $dark-text-link-blue-active;
     }
   }
 
@@ -242,6 +250,45 @@ body[data-theme="dark"] {
 
     .post-item-reading-time {
       color: $dark-gray;
+    }
+  }
+
+  .featured-article {
+    border-color: $dark-light;
+  }
+
+  .featured-article__label,
+  .featured-article__meta {
+    color: $dark-gray;
+  }
+
+  .featured-article__title a {
+    color: $dark-white;
+
+    &:hover,
+    &:focus {
+      color: $dark-text-link-blue;
+    }
+  }
+
+  .featured-article__description {
+    color: $dark-text-base-color;
+  }
+
+  .post-discovery {
+    border-color: $dark-light;
+
+    .post-discovery__title {
+      color: $dark-white;
+    }
+
+    .post-discovery__link {
+      color: $dark-text-link-blue;
+
+      &:hover,
+      &:focus {
+        color: $dark-text-link-blue-active;
+      }
     }
   }
 

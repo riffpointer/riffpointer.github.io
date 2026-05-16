@@ -7,6 +7,7 @@ layout: compress
 
 {% include header.html %}
 <body data-theme="{{ site.mode }}" class="notransition fonts-loading">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <script>
     (function() {
@@ -39,7 +40,7 @@ layout: compress
 
   {% include navbar.html %}
   <div class="wrapper">
-    <main aria-label="Content">
+    <main id="main-content" aria-label="Content">
       <div class="not-found">
         <div class="container">
           <div class="title">404</div>

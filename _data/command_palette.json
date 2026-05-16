@@ -21,6 +21,20 @@
     "keywords": ["projects", "work", "portfolio", "github"]
   },
   {
+    "title": "Resources",
+    "href": "/resources/",
+    "description": "Browse reference links and tools",
+    "icon": "collection",
+    "keywords": ["resources", "tools", "reference", "docs"]
+  },
+  {
+    "title": "Bookmarks",
+    "href": "/resources/bookmarks/",
+    "description": "Open saved links and reading notes",
+    "icon": "bookmark-star",
+    "keywords": ["bookmarks", "saved", "links", "reading"]
+  },
+  {
     "title": "About",
     "href": "/about/",
     "description": "Learn more about me",
@@ -29,7 +43,7 @@
   },
   {
     "title": "Tags",
-    "href": "/tags.html",
+    "href": "/tags/",
     "description": "Browse posts by tag",
     "icon": "tags",
     "keywords": ["tags", "topics", "categories"]
@@ -43,21 +57,21 @@
   },
   {
     "title": "Random Project",
-    "href": "javascript:window.randomProject()",
+    "action": { "type": "random-project" },
     "description": "Visit a random project on GitHub",
     "icon": "dice-5",
     "keywords": ["random", "project", "surprise", "luck"]
   },
   {
     "title": "Random Page",
-    "href": "javascript:window.randomPage()",
+    "action": { "type": "random-page" },
     "description": "Visit a random post or page",
     "icon": "shuffle",
     "keywords": ["random", "page", "post", "article", "surprise", "luck"]
   },
   {
     "title": "Sinewave",
-    "href": "javascript:window.startModule('sinewave')",
+    "action": { "type": "module", "name": "sinewave" },
     "description": "Visualizer module",
     "icon": "activity",
     "keywords": ["sinewave", "wave", "visualizer"],
@@ -65,7 +79,7 @@
   },
   {
     "title": "PingPong",
-    "href": "javascript:window.startModule('pingpong')",
+    "action": { "type": "module", "name": "pingpong" },
     "description": "Arcade game",
     "icon": "controller",
     "keywords": ["pingpong", "game", "pong", "play"],
@@ -73,7 +87,7 @@
   },
   {
     "title": "TicTacToe",
-    "href": "javascript:window.startModule('tictactoe')",
+    "action": { "type": "module", "name": "tictactoe" },
     "description": "Classic 3x3 game",
     "icon": "grid-3x3",
     "keywords": ["tictactoe", "game", "xo", "play"],
@@ -81,7 +95,7 @@
   },
   {
     "title": "Snake",
-    "href": "javascript:window.startModule('snake')",
+    "action": { "type": "module", "name": "snake" },
     "description": "Retro snake game",
     "icon": "bug",
     "keywords": ["snake", "game", "retro", "play"],
@@ -89,7 +103,7 @@
   },
   {
     "title": "Breakout",
-    "href": "javascript:window.startModule('breakout')",
+    "action": { "type": "module", "name": "breakout" },
     "description": "Block breaker game",
     "icon": "bricks",
     "keywords": ["breakout", "game", "blocks", "play"],
@@ -97,7 +111,7 @@
   },
   {
     "title": "Roll Dice",
-    "href": "javascript:window.startModule('dice')",
+    "action": { "type": "module", "name": "dice" },
     "description": "Roll some virtual dice",
     "icon": "dice-6",
     "keywords": ["dice", "roll", "random", "luck"],
@@ -105,10 +119,26 @@
   },
   {
     "title": "2048",
-    "href": "javascript:window.startModule('2048')",
+    "action": { "type": "module", "name": "2048" },
     "description": "Sliding tile puzzle game",
     "icon": "grid-1x1",
     "keywords": ["2048", "game", "puzzle", "slide"],
+    "hidden": true
+  },
+  {
+    "title": "Matrix Mode",
+    "action": { "type": "module", "name": "matrix" },
+    "description": "Trigger a persistent falling green code rain background",
+    "icon": "grid-fill",
+    "keywords": ["matrix", "hack", "rain", "effect"],
+    "hidden": true
+  },
+  {
+    "title": "Stop Matrix",
+    "action": { "type": "matrix-stop" },
+    "description": "Stop the Matrix background effect",
+    "icon": "stop-circle",
+    "keywords": ["stop", "matrix", "clear", "remove"],
     "hidden": true
   }
 ]

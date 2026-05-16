@@ -7,5 +7,8 @@ Source code for riffpointer.github.io
 ## Theme
 This site is based on the [Klisé](https://github.com/piharpi/jekyll-klise) Jekyll theme.
 
+## Development
+See [Local Setup, Build, Serve, and Deploy](docs/local-setup-build-serve-deploy.md) for the local workflow and deployment path.
+
 ## License
 Licensed under the [MIT License](LICENSE)

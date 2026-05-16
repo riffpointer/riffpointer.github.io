@@ -382,6 +382,49 @@ html.toc-open {
   font-family: "Ubuntu mono", "monospace";
 }
 
+.post-discovery {
+  margin-top: 4em;
+  padding-top: 2em;
+  border-top: 1px solid $light;
+}
+
+.post-discovery__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-discovery__title {
+  margin: 0;
+  color: $black;
+  font-size: 1.15em;
+  font-weight: $bold-weight;
+}
+
+.post-discovery__link {
+  color: $text-link-blue;
+  font-size: $small-font-size;
+  font-weight: $bold-weight;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $text-link-blue-active;
+  }
+}
+
+.post-discovery__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-discovery__item {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
 .comments {
   margin-top: 4em;
   padding-top: 2em;
@@ -469,6 +512,15 @@ html.toc-open {
 
   .toc-link {
     padding: 0.55rem 0.2rem;
+    font-size: 1.05em;
+  }
+
+  .post-discovery__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .post-discovery__title {
     font-size: 1.05em;
   }
 }

@@ -137,41 +137,35 @@ bundle exec jekyll build
 
 ## LaTeX
 
-Inline math should render inside text, such as \\(E = mc^2\\), \\(a^2 + b^2 = c^2\\), and \\(\sum_{i=1}^{n} i = \frac{n(n+1)}{2}\\).
+Inline math should render inside text, such as $E = mc^2$, $a^2 + b^2 = c^2$, and $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$.
 
 Block math:
 
-<div>
-\\[
+$$
 \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
-\\]
-</div>
+$$
 
 Aligned equations:
 
-<div>
-\\[
+$$
 \begin{aligned}
 \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
 \nabla \cdot \mathbf{B} &= 0 \\
 \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
 \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0\varepsilon_0\frac{\partial \mathbf{E}}{\partial t}
 \end{aligned}
-\\]
-</div>
+$$
 
 Matrix notation:
 
-<div>
-\\[
+$$
 A =
 \begin{bmatrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
 \end{bmatrix}
-\\]
-</div>
+$$
 
 ## Images
 

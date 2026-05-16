@@ -4,6 +4,7 @@
     "description": "Track quota usage across multiple ChatGPT accounts",
     "id": "codex-quota-tracker",
     "has_demo": false,
+    "updated": "2026-05-11",
     "tags": [
       "python",
       "codex",
@@ -16,6 +17,7 @@
     "description": "A simple and intelligent disk cleanup utility for Windows, written in Powershell and WinForms",
     "id": "DiskyCleaner",
     "has_demo": false,
+    "updated": "2026-05-11",
     "tags": [
       "powershell",
       "csharp",

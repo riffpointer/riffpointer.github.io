@@ -1,10 +1,69 @@
-// Code
+// Code Variables
+:root {
+  --syntax-bg: #f8f8f8;
+  --syntax-color: #333333;
+  --syntax-err: #d73a49;
+  --syntax-comment: #6a737d;
+  --syntax-preproc: #005cc5;
+  --syntax-tag: #22863a;
+  --syntax-operator: #d73a49;
+  --syntax-punctuation: #24292e;
+  --syntax-deleted-bg: #ffeef0;
+  --syntax-deleted-color: #b31d28;
+  --syntax-inserted-bg: #e6ffed;
+  --syntax-inserted-color: #22863a;
+  --syntax-keyword: #d73a49;
+  --syntax-constant: #005cc5;
+  --syntax-type: #d73a49;
+  --syntax-string: #032f62;
+  --syntax-name-class: #6f42c1;
+  --syntax-name-func: #6f42c1;
+  --syntax-name-attr: #6f42c1;
+  --syntax-number: #005cc5;
+  --syntax-symbol: #032f62;
+  --syntax-copy-bg: rgba(0, 0, 0, 0.05);
+  --syntax-copy-border: rgba(0, 0, 0, 0.1);
+  --syntax-copy-color: #24292e;
+  --syntax-lineno-color: #999999;
+  --syntax-lineno-border: rgba(0, 0, 0, 0.05);
+}
+
+body[data-theme="dark"] {
+  --syntax-bg: #1a1b21;
+  --syntax-color: #fbf1c7;
+  --syntax-err: #fb4934;
+  --syntax-comment: #928374;
+  --syntax-preproc: #8ec07c;
+  --syntax-tag: #fb4934;
+  --syntax-operator: #fbf1c7;
+  --syntax-punctuation: #fbf1c7;
+  --syntax-deleted-bg: #282828;
+  --syntax-deleted-color: #fb4934;
+  --syntax-inserted-bg: #282828;
+  --syntax-inserted-color: #b8bb26;
+  --syntax-keyword: #fb4934;
+  --syntax-constant: #d3869b;
+  --syntax-type: #fabd2f;
+  --syntax-string: #b8bb26;
+  --syntax-name-class: #8ec07c;
+  --syntax-name-func: #fabd2f;
+  --syntax-name-attr: #b8bb26;
+  --syntax-number: #d3869b;
+  --syntax-symbol: #83a598;
+  --syntax-copy-bg: rgba(255, 255, 255, 0.08);
+  --syntax-copy-border: rgba(255, 255, 255, 0.14);
+  --syntax-copy-color: #fbf1c7;
+  --syntax-lineno-color: #666666;
+  --syntax-lineno-border: rgba(255, 255, 255, 0.05);
+}
+
+// Inline Code
 code {
   font-family: $mono-family;
   text-rendering: optimizeLegibility;
   font-feature-settings: "calt" 1;
   font-variant-ligatures: normal;
-  white-space: pre;
+  white-space: pre-wrap;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -14,62 +73,86 @@ code {
     padding: 1px 3px;
     position: relative;
     top: -1px;
-    background-color: #f6f6f6;
+    background-color: var(--syntax-bg);
     border-radius: 2px;
     border: 1px solid rgba(128,128,128,0.1);
   }
 }
 
-// Codeblock Theme
-pre.highlight, pre {
-  margin: 0 -27px;
+// Codeblock Theme (High-level Container)
+div.highlighter-rouge {
+  margin: 0 -27px 1.5rem;
   @include media-query($on-mobile) {
-    margin: 0 calc(51% - 51vw);
-    padding-left: 20px;
+    margin: 0 calc(51% - 51vw) 1.5rem;
   }
   border: 1px solid rgba(128,128,128,0.1);
-  background-color: #1a1b21;
+  background-color: var(--syntax-bg);
   border-radius: 2px;
-  padding: 10px;
-  display: block;
-  overflow-x: auto;
-
-  > code {
-    width: 100%;
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.5;
-    display: block;
-    border: 0;
-  }
-}
-
-.highlight table td {
-  padding: 5px;
-}
-
-.highlight table pre {
-  margin: 0;
-}
-
-.highlight,
-.highlight .w {
-  color: #fbf1c7;
-  // background-color: #1a1b21;
-}
-
-.highlighter-rouge {
   position: relative;
   display: block;
   width: 100%;
   box-sizing: border-box;
 
+  // Clean up nested elements
+  .highlight, pre, code {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    display: block;
+    overflow: visible;
+    width: auto;
+  }
+
+  // Actual scrollable area
+  .highlight {
+    overflow-x: auto;
+  }
+
+  // Standard code block padding
+  pre {
+    padding: 10px;
+  }
+
+  // Line numbers (Rouge Table)
+  .rouge-table {
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: 10px 0;
+      border: none;
+      vertical-align: top;
+    }
+
+    .rouge-gutter {
+      user-select: none;
+      text-align: right;
+      width: 1%;
+      min-width: 30px;
+      padding-left: 10px;
+      padding-right: 15px;
+      border-right: 1px solid var(--syntax-lineno-border);
+      color: var(--syntax-lineno-color);
+      
+      pre { padding: 0; }
+    }
+
+    .rouge-code {
+      padding-left: 15px;
+      padding-right: 10px;
+      
+      pre { padding: 0; }
+    }
+  }
+
+  // Copy Button
   .copy-code-button {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--syntax-copy-bg);
+    border: 1px solid var(--syntax-copy-border);
     border-radius: 4px;
-    color: #fbf1c7;
+    color: var(--syntax-copy-color);
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -83,6 +166,7 @@ pre.highlight, pre {
     right: 10px;
     top: 10px;
     transition: opacity 150ms ease-in, background-color 150ms ease-in;
+    z-index: 10;
 
     i {
       font-size: 0.95em;
@@ -100,22 +184,24 @@ pre.highlight, pre {
   .copy-code-button:hover,
   .copy-code-button:focus,
   .copy-code-button.is-copied {
-    background: rgba(255, 255, 255, 0.16);
+    background: var(--syntax-copy-bg);
+    filter: brightness(1.2);
     opacity: 1;
   }
 
   .copy-code-button.is-copied {
-    color: #b8bb26;
+    color: var(--syntax-inserted-color);
   }
 }
 
-.highlight {
-  position: static;
+// Syntax Colors
+.highlight,
+.highlight .w {
+  color: var(--syntax-color);
 }
 
 .highlight .err {
-  color: #fb4934;
-  // background-color: #1a1b21;
+  color: var(--syntax-err);
   font-weight: bold;
 }
 
@@ -124,40 +210,40 @@ pre.highlight, pre {
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-  color: #928374;
+  color: var(--syntax-comment);
   font-style: italic;
 }
 
 .highlight .cp {
-  color: #8ec07c;
+  color: var(--syntax-preproc);
 }
 
 .highlight .nt {
-  color: #fb4934;
+  color: var(--syntax-tag);
 }
 
 .highlight .o,
 .highlight .ow {
-  color: #fbf1c7;
+  color: var(--syntax-operator);
 }
 
 .highlight .p,
 .highlight .pi {
-  color: #fbf1c7;
+  color: var(--syntax-punctuation);
 }
 
 .highlight .gi {
-  color: #b8bb26;
-  background-color: #282828;
+  color: var(--syntax-inserted-color);
+  background-color: var(--syntax-inserted-bg);
 }
 
 .highlight .gd {
-  color: #fb4934;
-  background-color: #282828;
+  color: var(--syntax-deleted-color);
+  background-color: var(--syntax-deleted-bg);
 }
 
 .highlight .gh {
-  color: #b8bb26;
+  color: var(--syntax-inserted-color);
   font-weight: bold;
 }
 
@@ -166,19 +252,19 @@ pre.highlight, pre {
 .highlight .kp,
 .highlight .kr,
 .highlight .kv {
-  color: #fb4934;
+  color: var(--syntax-keyword);
 }
 
 .highlight .kc {
-  color: #d3869b;
+  color: var(--syntax-constant);
 }
 
 .highlight .kt {
-  color: #fabd2f;
+  color: var(--syntax-type);
 }
 
 .highlight .kd {
-  color: #fe8019;
+  color: var(--syntax-keyword);
 }
 
 .highlight .s,
@@ -189,38 +275,38 @@ pre.highlight, pre {
 .highlight .sh,
 .highlight .sx,
 .highlight .s1 {
-  color: #b8bb26;
+  color: var(--syntax-string);
   font-style: italic;
 }
 
 .highlight .si {
-  color: #b8bb26;
+  color: var(--syntax-string);
   font-style: italic;
 }
 
 .highlight .sr {
-  color: #b8bb26;
+  color: var(--syntax-string);
   font-style: italic;
 }
 
 .highlight .se {
-  color: #fe8019;
+  color: var(--syntax-constant);
 }
 
 .highlight .nn {
-  color: #8ec07c;
+  color: var(--syntax-name-class);
 }
 
 .highlight .nc {
-  color: #8ec07c;
+  color: var(--syntax-name-class);
 }
 
 .highlight .no {
-  color: #d3869b;
+  color: var(--syntax-constant);
 }
 
 .highlight .na {
-  color: #b8bb26;
+  color: var(--syntax-name-attr);
 }
 
 .highlight .m,
@@ -231,9 +317,25 @@ pre.highlight, pre {
 .highlight .mo,
 .highlight .mb,
 .highlight .mx {
-  color: #d3869b;
+  color: var(--syntax-number);
 }
 
 .highlight .ss {
-  color: #83a598;
+  color: var(--syntax-symbol);
+}
+
+// MathJax Styling
+mjx-container[display="true"] {
+  display: block !important;
+  margin: 1.5rem auto !important;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  outline: none;
+  padding: 0.5rem 0;
+}
+
+mjx-container {
+  color: inherit;
 }

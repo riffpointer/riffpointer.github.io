@@ -6,3 +6,4 @@ _drafts
 klise-*.gem
 Gemfile.lock
 /tools/project_manager/__pycache__
+.markdownlint-cli2.jsonc

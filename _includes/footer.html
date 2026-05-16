@@ -18,127 +18,20 @@
     >
   </small>
 </footer>
-<div class="command-palette" id="command-palette" hidden aria-hidden="true">
-  <div class="command-palette__backdrop" data-command-palette-close></div>
-  <div
-    class="command-palette__dialog"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Command palette"
-  >
-    <label class="command-palette__search">
-      <i class="bi bi-search" aria-hidden="true"></i>
-      <input
-        id="command-palette-input"
-        type="search"
-        autocomplete="off"
-        spellcheck="false"
-        placeholder="Type to filter links"
-      />
-    </label>
-    <div class="command-palette__body">
-      <div class="command-palette__empty" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="M18.288 11.683a7.7 7.7 0 0 0-1.306-3.747a6.7 6.7 0 0 0-7.286-2.721a6.87 6.87 0 0 0-5.262 5.651a5.6 5.6 0 0 0 0 1.585c.077.546.278 1.068.588 1.525c.548.777 1.395.996 1.824 1.604c.166.235.24.522.21.808a.27.27 0 0 0 .248.289h.28q1.071.296 2.172.448q.471.06.947.06h.947c.727 0 1.445-.14 2.183-.24a.31.31 0 1 0-.03-.617l-2.153-.12H7.603c0-.33-.1-.654-.289-.927c-.408-.588-1.236-.857-1.754-1.634a3 3 0 0 1-.409-1.256a4.8 4.8 0 0 1 .02-1.405a6.05 6.05 0 0 1 4.755-4.814a5.74 5.74 0 0 1 6.199 2.352a6.7 6.7 0 0 1 1.136 3.22a3.92 3.92 0 0 1-.997 3.069a6 6 0 0 1-.478.429c-.449.348-.897.627-1.336.996a1.4 1.4 0 0 0-.348.578q-.14.492-.22.997c-.01.23-.086.45-.219.638a3.2 3.2 0 0 1-2.233.767a10.2 10.2 0 0 1-3.627-.787c.09-.16 0-.648 0-.947a.32.32 0 0 0-.33-.299a.31.31 0 0 0-.288.329c0 .399-.07.907 0 1.126a.43.43 0 0 0 .249.31c1.279.59 2.66.928 4.066.996a3.93 3.93 0 0 0 2.79-.917c.16-.155.28-.347.35-.558q.156-.49.239-.997c-.005-.176.033-.35.11-.508c.438-.379.877-.628 1.315-.997q.31-.229.578-.508a4.84 4.84 0 0 0 1.406-3.778"/><path fill="currentColor" d="M9.696 13.976c.06-.578.1-1.166.15-1.744q.235.242.528.408c.318.202.69.302 1.067.29c.35-.01.692-.106.996-.28v.827q-.005.974.16 1.934c0 .21.498.339.598 0q-.09-.966 0-1.934q.208-1.315.588-2.59a.44.44 0 0 0-.2-.52a.45.45 0 0 0-.608.06a.7.7 0 0 0-.1.16l-.109.22l-.24.388a1.6 1.6 0 0 1-.507.458a1.14 1.14 0 0 1-.598.18a1 1 0 0 1-.628-.23a1.74 1.74 0 0 1-.519-.597l-.179-.449c0-.09-.07-.309-.09-.369a.5.5 0 0 0-.398-.199a.46.46 0 0 0-.449.13c-.319.338-.07 2.252-.21 4.475a3 3 0 0 1 0 .647c0 .42.47.539.579.1c.106-.447.163-.905.17-1.365M3.098 6.182a3 3 0 0 0-.408-.409l-.459-.339c-.369-.239-.757-.428-1.146-.648a.32.32 0 0 0-.439.07a.31.31 0 0 0 .07.429c.3.309.588.618.897.917c.13.13.26.259.389.368c.13.11.269.23.409.34q.518.351.996.757a.27.27 0 0 0 .379 0a.27.27 0 0 0 .05-.389a5.8 5.8 0 0 0-.738-1.096m3.967-4.445q.075.275.19.538c.07.17.139.339.209.508c.15.339.309.687.439 1.037a.31.31 0 0 0 .409.18a.31.31 0 0 0 .18-.409a15 15 0 0 0-.548-1.286c-.1-.2-.19-.409-.289-.608c-.08-.18-.16-.359-.24-.528a.31.31 0 0 0-.418-.14a.31.31 0 0 0-.14.408"/></svg>
-        <p>No matching results.</p>
-      </div>
-      <div class="command-palette__error" hidden aria-hidden="true">
-        <i class="bi bi-exclamation-triangle"></i>
-        <p>Failed to load commands.</p>
-        <span class="command-palette__error-detail"></span>
-      </div>
-      <div class="command-palette__calculator" hidden>
-        <span class="command-palette__calc-expression"></span>
-        <strong class="command-palette__calc-result"></strong>
-      </div>
-      <canvas class="command-palette__sinewave" hidden></canvas>
-      <div class="command-palette__game" hidden>
-        <canvas id="pong-canvas"></canvas>
-      </div>
-      <div class="command-palette__tictactoe" hidden>
-        <div class="tictactoe-grid">
-          <button data-index="0"></button><button data-index="1"></button><button data-index="2"></button>
-          <button data-index="3"></button><button data-index="4"></button><button data-index="5"></button>
-          <button data-index="6"></button><button data-index="7"></button><button data-index="8"></button>
-        </div>
-        <div class="tictactoe-controls">
-          <div class="tictactoe-status"></div>
-          <button class="tictactoe-reset">Reset Game</button>
-        </div>
-      </div>
-      <div class="command-palette__snake" hidden>
-        <canvas id="snake-canvas"></canvas>
-        <div class="game-overlay" hidden>
-          <div class="game-over-text">GAME OVER</div>
-          <button class="game-restart">Restart</button>
-        </div>
-      </div>
-      <div class="command-palette__breakout" hidden>
-        <canvas id="breakout-canvas"></canvas>
-        <div class="game-overlay" hidden>
-          <div class="game-over-text">GAME OVER</div>
-          <button class="game-restart">Restart</button>
-        </div>
-      </div>
-      <div class="command-palette__dice" hidden>
-        <div class="dice-container">
-          <div class="dice-result">?</div>
-          <div class="dice-history"></div>
-        </div>
-        <button class="dice-roll">Roll D6</button>
-      </div>
-      <div class="command-palette__2048" hidden>
-        <div class="game-2048-header">
-          <div class="game-2048-status">Score: <span class="game-2048-score">0</span></div>
-          <button class="game-2048-reset">New Game</button>
-        </div>
-        <div class="game-2048-container">
-          <div class="game-2048-grid">
-            <div class="game-2048-cell" data-pos="0"></div><div class="game-2048-cell" data-pos="1"></div><div class="game-2048-cell" data-pos="2"></div><div class="game-2048-cell" data-pos="3"></div>
-            <div class="game-2048-cell" data-pos="4"></div><div class="game-2048-cell" data-pos="5"></div><div class="game-2048-cell" data-pos="6"></div><div class="game-2048-cell" data-pos="7"></div>
-            <div class="game-2048-cell" data-pos="8"></div><div class="game-2048-cell" data-pos="9"></div><div class="game-2048-cell" data-pos="10"></div><div class="game-2048-cell" data-pos="11"></div>
-            <div class="game-2048-cell" data-pos="12"></div><div class="game-2048-cell" data-pos="13"></div><div class="game-2048-cell" data-pos="14"></div><div class="game-2048-cell" data-pos="15"></div>
-          </div>
-          <div class="game-overlay" hidden>
-            <div class="game-over-text">GAME OVER</div>
-            <button class="game-restart">Try Again</button>
-          </div>
-        </div>
-      </div>
-      <ul class="command-palette__list" id="command-palette-list"></ul>
-    </div>
-    </div>
-
-    <script id="command-palette-data" type="application/json">
-    {{ site.data.command_palette | jsonify }}
-    </script>
-
-    <script>
-      window.projectUrls = [
-        {% for project in site.data.projects %}
-          "https://github.com/riffpointer/{{ project.id }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ];
-      window.pageUrls = [
-        {% for post in site.posts %}
-          "{{ post.url | relative_url }}"{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ];
-
-      window.randomProject = function() {
-        const urls = window.projectUrls;
-        if (urls && urls.length > 0) {
-          window.location.href = urls[Math.floor(Math.random() * urls.length)];
-        }
-      };
-      window.randomPage = function() {
-        const urls = window.pageUrls;
-        if (urls && urls.length > 0) {
-          window.location.href = urls[Math.floor(Math.random() * urls.length)];
-        }
-      };
-    </script>
+<canvas id="matrix-canvas" hidden aria-hidden="true"></canvas>
 </div>
-<script src="/assets/js/main.js" defer="defer"></script>
+<div
+  id="command-palette-root"
+  hidden
+  data-command-palette-src="/command-palette.html?v={{ site.time | date: '%s' }}"
+></div>
+<script src="/assets/js/theme.js?v={{ site.time | date: '%s' }}" defer="defer"></script>
+<script src="/assets/js/site-enhancements.js?v={{ site.time | date: '%s' }}" defer="defer"></script>
+<script
+  src="/assets/js/main.js?v={{ site.time | date: '%s' }}"
+  data-command-palette-script="/assets/js/command-palette.js?v={{ site.time | date: '%s' }}"
+  defer="defer"
+></script>
 {%- if site.google_analytics -%}
   <!-- Google tag (gtag.js) -->
   <script
@@ -157,13 +50,5 @@
 {%- endif -%}
 {%- if page.url == '/archive/' -%}
   <script src="/assets/js/search.min.js" defer="defer"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-results'),
-        json: '/assets/search.json',
-      });
-    });
-  </script>
+  <script src="/assets/js/archive-search.js" defer="defer"></script>
 {%- endif -%}

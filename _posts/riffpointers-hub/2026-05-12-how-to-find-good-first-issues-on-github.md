@@ -3,6 +3,7 @@ layout: post
 title:  "Finding Good First Issues on GitHub"
 date:   2026-05-12 10:00:00 +05:30
 categories: [github, issues, open-source]
+tags: [github, issues, open-source]
 ---
 
 Finding a **"good first issue"** is a great way to start contributing to open source, or if you're just doing it as a fun hobby, it's great as well, either way, this guide will help you find issues on GitHub tagged **"good first issue"**.

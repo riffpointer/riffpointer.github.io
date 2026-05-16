@@ -3,13 +3,49 @@ layout: default
 home: true
 ---
 
-<h3 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h3>
+<header class="home-hero" aria-labelledby="home-title">
+  <img
+    class="home-hero__avatar"
+    src="{{ site.author.avatar }}"
+    srcset="/assets/img/avatar-140.jpg 140w, {{ site.author.avatar }} 800w"
+    sizes="72px"
+    width="72"
+    height="72"
+    decoding="async"
+    fetchpriority="high"
+    alt="{{ site.author.name }}"
+  />
+  <h1 class="home-hero__title" id="home-title">{{ site.title | escape }}</h1>
+  <p class="home-hero__description">{{ site.description }}</p>
+</header>
+
+{%- assign latest_post = site.posts.first -%}
+{%- if latest_post -%}
+<section class="featured-article" aria-labelledby="featured-article-title">
+  <div class="featured-article__label">Latest Article</div>
+  <h2 class="featured-article__title" id="featured-article-title">
+    <a href="{{ latest_post.url | relative_url }}">{{ latest_post.title | escape }}</a>
+  </h2>
+  <p class="featured-article__description">
+    {{ latest_post.description | default: latest_post.excerpt | strip_html | normalize_whitespace | truncatewords: 24 }}
+  </p>
+  <div class="featured-article__meta">
+    <span>{{ latest_post.date | date: "%b %d, %Y" }}</span>
+    {% include reading_time.html content=latest_post.content class="featured-article__reading-time" %}
+  </div>
+</section>
+{%- endif -%}
+
+<h2 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h2>
 {%- for post in site.posts limit: site.number_of_posts -%}
+{%- if latest_post and post.url == latest_post.url -%}
+  {%- continue -%}
+{%- endif -%}
 <article class="post-item">
   <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
-  <h4 class="post-item-title">
+  <h3 class="post-item-title">
     <a href="{{ post.url }}">{{ post.title | escape }}</a>
-  </h4>
+  </h3>
   {% include reading_time.html content=post.content class="post-item-reading-time" %}
 </article>
 {%- endfor -%}
