@@ -32,13 +32,6 @@
   }
 }
 
-.notransition {
-  -webkit-transition: none;
-  -moz-transition: none; 
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-}
 
 html {
   overflow-x: hidden;
@@ -82,12 +75,6 @@ body {
   font-feature-settings: "kern" 1;
   font-kerning: normal;
   box-sizing: border-box;
-
-  &.fonts-loading {
-    opacity: 0;
-  }
-
-  transition: opacity 100ms ease-in;
 }
 
 // Set `margin-bottom` to maintain vertical rhythm
@@ -320,11 +307,6 @@ blockquote {
     max-width: calc(#{$narrow-size} - (#{$spacing-full}));
     padding-right: $spacing-full - 10;
     padding-left: $spacing-full - 10;
-    transition: filter 300ms ease-out;
-
-    &.blurry {
-      filter: blur(4px);
-    }
   }
 }
 

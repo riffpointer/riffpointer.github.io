@@ -45,7 +45,12 @@
         const a = document.createElement("a");
         a.className = `toc-link toc-link-${h.tagName.toLowerCase()}`;
         a.href = `#${h.id}`;
-        a.textContent = h.textContent.trim();
+        
+        const clone = h.cloneNode(true);
+        const anchor = clone.querySelector(".anchor-head");
+        if (anchor) anchor.remove();
+        a.textContent = clone.textContent.trim();
+
         a.addEventListener("click", cT);
         lst.appendChild(a);
       });
@@ -97,8 +102,6 @@
     };
     syncMenuState();
     mTrig.addEventListener("change", function () {
-      const a = document.querySelector(".wrapper");
-      this.checked ? a.classList.add("blurry") : a.classList.remove("blurry");
       syncMenuState();
     });
     const mOver = document.querySelector(".trigger");

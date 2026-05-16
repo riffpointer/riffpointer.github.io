@@ -7,7 +7,7 @@ layout: compress
 
 {% include header.html %}
 
-<body data-theme="{{ site.mode }}" class="notransition fonts-loading">
+<body data-theme="{{ site.mode }}">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <script>
@@ -26,16 +26,6 @@ layout: compress
       };
   
       initTheme(localStorage.getItem("theme"));
-      
-      const reveal = () => {
-        body.classList.remove("notransition", "fonts-loading");
-      };
-
-      if ("fonts" in document) {
-        document.fonts.ready.then(reveal);
-      } else {
-        setTimeout(reveal, 75);
-      }
     })();
   </script>
 

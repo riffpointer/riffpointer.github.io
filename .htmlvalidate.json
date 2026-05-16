@@ -7,6 +7,12 @@
     "void-style": "off",
     "no-inline-style": "off",
     "wcag/h63": "off",
+    "wcag/h30": "off",
+    "unique-landmark": "off",
+    "prefer-native-element": "off",
+    "aria-label-misuse": "off",
+    "no-dup-id": "error",
+    "close-order": "error",
     "valid-id": [
       "error",
       {

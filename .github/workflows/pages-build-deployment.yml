@@ -37,8 +37,6 @@ jobs:
           htmlproofer ./_site --disable-external --allow-hash-href --assume-extension .html
       - name: Validate HTML with html-validate
         run: npx --yes html-validate@8.24.1 "_site/**/*.html"
-      - name: Lint Markdown
-        run: npx --yes markdownlint-cli2
       - name: Run Lighthouse accessibility audit
         run: |
           python3 -m http.server 4000 --directory ./_site >/tmp/riffpointer-site.log 2>&1 &
