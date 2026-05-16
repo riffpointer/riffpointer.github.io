@@ -10,4 +10,4 @@
 {%- if minutes < 1 -%}
   {%- assign minutes = 1 -%}
 {%- endif -%}
-<span class="{{ include.class | default: 'reading-time' }}" title="{{ words }} words, {{ characters }} characters" aria-label="{{ minutes }} min read, {{ words }} words, {{ characters }} characters">{{ minutes }} min read</span>
+<span class="{{ include.class | default: 'reading-time' }}" title="{{ words }} words, {{ characters }} characters">{{ minutes }} min read</span>

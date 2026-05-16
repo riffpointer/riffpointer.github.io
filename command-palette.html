@@ -18,7 +18,7 @@ permalink: /command-palette.html
         autocomplete="off"
         spellcheck="false"
         placeholder="Type to filter links"
-      />
+      >
     </label>
     <div class="command-palette__body">
       <div class="command-palette__empty" hidden>
@@ -40,27 +40,27 @@ permalink: /command-palette.html
       </div>
       <div class="command-palette__tictactoe" hidden>
         <div class="tictactoe-grid">
-          <button data-index="0"></button><button data-index="1"></button><button data-index="2"></button>
-          <button data-index="3"></button><button data-index="4"></button><button data-index="5"></button>
-          <button data-index="6"></button><button data-index="7"></button><button data-index="8"></button>
+          <button type="button" data-index="0"></button><button type="button" data-index="1"></button><button type="button" data-index="2"></button>
+          <button type="button" data-index="3"></button><button type="button" data-index="4"></button><button type="button" data-index="5"></button>
+          <button type="button" data-index="6"></button><button type="button" data-index="7"></button><button type="button" data-index="8"></button>
         </div>
         <div class="tictactoe-controls">
           <div class="tictactoe-status"></div>
-          <button class="tictactoe-reset">Reset Game</button>
+          <button type="button" class="tictactoe-reset">Reset Game</button>
         </div>
       </div>
       <div class="command-palette__snake" hidden>
         <canvas id="snake-canvas"></canvas>
         <div class="game-overlay" hidden>
           <div class="game-over-text">GAME OVER</div>
-          <button class="game-restart">Restart</button>
+          <button type="button" class="game-restart">Restart</button>
         </div>
       </div>
       <div class="command-palette__breakout" hidden>
         <canvas id="breakout-canvas"></canvas>
         <div class="game-overlay" hidden>
           <div class="game-over-text">GAME OVER</div>
-          <button class="game-restart">Restart</button>
+          <button type="button" class="game-restart">Restart</button>
         </div>
       </div>
       <div class="command-palette__dice" hidden>
@@ -68,7 +68,7 @@ permalink: /command-palette.html
           <div class="dice-result">?</div>
           <div class="dice-history"></div>
         </div>
-        <button class="dice-roll">Roll D6</button>
+        <button type="button" class="dice-roll">Roll D6</button>
       </div>
       <div class="command-palette__2048" hidden>
         <div class="game-2048-layout">
@@ -82,7 +82,7 @@ permalink: /command-palette.html
               </div>
               <div class="game-overlay" hidden>
                 <div class="game-over-text">GAME OVER</div>
-                <button class="game-restart">Try Again</button>
+                <button type="button" class="game-restart">Try Again</button>
               </div>
             </div>
           </div>
@@ -97,13 +97,14 @@ permalink: /command-palette.html
                 <span class="game-2048-best">0</span>
               </div>
             </div>
-            <button class="game-2048-reset">New Game</button>
+            <button type="button" class="game-2048-reset">New Game</button>
           </div>
         </div>
       </div>
       <ul class="command-palette__list" id="command-palette-list"></ul>
     </div>
-    </div>
+  </div>
+</div>
 
     <script id="command-palette-data" type="application/json">
     {

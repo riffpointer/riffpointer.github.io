@@ -13,8 +13,7 @@ home: true
     height="72"
     decoding="async"
     fetchpriority="high"
-    alt="{{ site.author.name }}"
-  />
+    alt="{{ site.author.name }}">
   <h1 class="home-hero__title" id="home-title">{{ site.title | escape }}</h1>
   <p class="home-hero__description">{{ site.description }}</p>
 </header>
@@ -36,7 +35,7 @@ home: true
 </section>
 {%- endif -%}
 
-<h2 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h2>
+<h2 class="posts-item-note">Recent Posts</h2>
 {%- for post in site.posts limit: site.number_of_posts -%}
 {%- if latest_post and post.url == latest_post.url -%}
   {%- continue -%}

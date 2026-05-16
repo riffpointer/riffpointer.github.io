@@ -1,12 +1,12 @@
 <head prefix="og: http://ogp.me/ns#">
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="application-name" content="{{ site.title }}" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#fff" />
-  <meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="{{ site.title }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
   <title>
     {% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{
     site.title }}{% endif %}
@@ -16,14 +16,12 @@
     href="{{
       page.url | remove: 'index.html' | remove: '.html' | absolute_url
     }}"
-    hreflang="{{ site.lang }}"
-  />
+    hreflang="{{ site.lang }}">
   <link
     rel="canonical"
     href="{{
       page.url  | remove: 'index.html' | remove: '.html' | absolute_url
-    }}"
-  />
+    }}">
   {% if paginator.previous_page %}
   <link
     rel="prev"
@@ -31,8 +29,7 @@
       paginator.previous_page_path
         | remove: 'index.html'
         | remove: '.html'
-    }}"
-  />
+    }}">
   {% endif %} {% if paginator.next_page %}
   <link
     rel="next"
@@ -40,8 +37,7 @@
       paginator.next_page_path
         | remove: 'index.html'
         | remove: '.html'
-    }}"
-  />
+    }}">
   {% endif %}
   <meta
     name="description"
@@ -52,37 +48,32 @@
         | normalize_whitespace
         | truncate: 200
         | escape
-    }}"
-  />
-  <meta name="referrer" content="no-referrer-when-downgrade" />
+    }}">
+  <meta name="referrer" content="no-referrer-when-downgrade">
   {% if site.fb_appid %}
-  <meta property="fb:app_id" content="{{ site.fb_appid }}" />
+  <meta property="fb:app_id" content="{{ site.fb_appid }}">
   {% endif %}
   <meta
     property="og:site_name"
-    content="{{ site.title }}"
-  />
+    content="{{ site.title }}">
   <meta
     property="og:title"
-    content="{% if page.title %}{% if page.layout == 'post' %}Post{% else %}Page{% endif %} - {{ page.title }}{% else %}{{ site.title }}{% endif %}"
-  />
+    content="{% if page.title %}{% if page.layout == 'post' %}Post{% else %}Page{% endif %} - {{ page.title }}{% else %}{{ site.title }}{% endif %}">
   {% if page.layout == 'post' %}
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="article">
   {% if site.author.facebook %}
   <meta
     property="article:publisher"
-    content="https://web.facebook.com/{{ site.author.facebook }}"
-  />
+    content="https://web.facebook.com/{{ site.author.facebook }}">
   {% endif %}
   {% else %}
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="website">
   {% endif %}
   <meta
     property="og:url"
     content="{{
       page.url | remove: 'index.html' | remove: '.html' | absolute_url
-    }}"
-  />
+    }}">
   <meta
     property="og:description"
     content="{{
@@ -92,29 +83,26 @@
         | normalize_whitespace
         | truncate: 200
         | escape
-    }}"
-  />
+    }}">
   {% if page.image %}
-  <meta property="og:image" content="{{ page.image | absolute_url }}" />
+  <meta property="og:image" content="{{ page.image | absolute_url }}">
   {% else %}
-  <meta property="og:image" content="{{ site.image | absolute_url }}" />
+  <meta property="og:image" content="{{ site.image | absolute_url }}">
   {% endif %}
-  <meta property="og:image:width" content="640" />
-  <meta property="og:image:height" content="640" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image:width" content="640">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:card" content="summary">
   <meta
     name="twitter:title"
-    content="{{ page.title | default: site.title }}"
-  />
+    content="{{ page.title | default: site.title }}">
   <meta
     name="twitter:url"
     content="{{
       page.url  | remove: 'index.html' | remove: '.html' | absolute_url
-    }}"
-  />
+    }}">
   {% if site.author.twitter %}
-  <meta name="twitter:site" content="@{{ site.author.twitter }}" />
-  <meta name="twitter:creator" content="@{{ site.author.twitter }}" />
+  <meta name="twitter:site" content="@{{ site.author.twitter }}">
+  <meta name="twitter:creator" content="@{{ site.author.twitter }}">
   {% endif %}
   <meta
     name="twitter:description"
@@ -125,60 +113,52 @@
         | normalize_whitespace
         | truncate: 200
         | escape
-    }}"
-  />
+    }}">
   {% if page.image %}
-  <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
+  <meta name="twitter:image" content="{{ page.image | absolute_url }}">
   {% else %}
-  <meta name="twitter:image" content="{{ site.image | absolute_url }}" />
+  <meta name="twitter:image" content="{{ site.image | absolute_url }}">
   {% endif %} {% feed_meta %}
   <link
     rel="apple-touch-icon"
     sizes="180x180"
-    href="/assets/favicons/apple-touch-icon.png"
-  />
+    href="/assets/favicons/apple-touch-icon.png">
   <link
     rel="icon"
     type="image/png"
     sizes="32x32"
-    href="/assets/favicons/favicon-32x32.png"
-  />
+    href="/assets/favicons/favicon-32x32.png">
   <link
     rel="icon"
     type="image/png"
     sizes="16x16"
-    href="/assets/favicons/favicon-16x16.png"
-  />
-  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+    href="/assets/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
   <link
     rel="mask-icon"
     href="/assets/favicons/safari-pinned-tab.svg"
-    color="#5bbad5"
-  />
-  <meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
-  <meta name="application-name" content="{{ site.title }}" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#2c2c2c" />
+    color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+  <meta name="application-name" content="{{ site.title }}">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#2c2c2c">
 
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css">
   <link
     rel="preload"
     href="/assets/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2"
     as="font"
     type="font/woff2"
-    crossorigin
-  />
+    crossorigin>
   <link
     rel="stylesheet"
     href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
     media="print"
-    onload="this.media='all'"
-  />
+    onload="this.media='all'">
   <noscript>
     <link
       rel="stylesheet"
-      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
-    />
+      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
   </noscript>
 
   <!-- for mathjax support -->
@@ -198,7 +178,7 @@
         }
       };
     </script>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   {% endif %}
     
 </head>

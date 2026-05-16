@@ -19,18 +19,17 @@
   </small>
 </footer>
 <canvas id="matrix-canvas" hidden aria-hidden="true"></canvas>
-</div>
 <div
   id="command-palette-root"
   hidden
   data-command-palette-src="/command-palette.html?v={{ site.time | date: '%s' }}"
 ></div>
-<script src="/assets/js/theme.js?v={{ site.time | date: '%s' }}" defer="defer"></script>
-<script src="/assets/js/site-enhancements.js?v={{ site.time | date: '%s' }}" defer="defer"></script>
+<script src="/assets/js/theme.js?v={{ site.time | date: '%s' }}" defer></script>
+<script src="/assets/js/site-enhancements.js?v={{ site.time | date: '%s' }}" defer></script>
 <script
   src="/assets/js/main.js?v={{ site.time | date: '%s' }}"
   data-command-palette-script="/assets/js/command-palette.js?v={{ site.time | date: '%s' }}"
-  defer="defer"
+  defer
 ></script>
 {%- if site.google_analytics -%}
   <!-- Google tag (gtag.js) -->
@@ -49,6 +48,6 @@
   </script>
 {%- endif -%}
 {%- if page.url == '/archive/' -%}
-  <script src="/assets/js/search.min.js" defer="defer"></script>
-  <script src="/assets/js/archive-search.js" defer="defer"></script>
+  <script src="/assets/js/search.min.js" defer></script>
+  <script src="/assets/js/archive-search.js" defer></script>
 {%- endif -%}
