@@ -283,6 +283,20 @@ html.toc-open {
         width: 1em;
         font-weight: $bold-weight;
       }
+
+      @include media-query($on-mobile) {
+        opacity: 0.9;
+        margin-right: 1.2rem;
+
+        &::before {
+          position: static;
+          color: $text-link-blue;
+
+          body[data-theme="dark"] & {
+            color: $dark-text-link-blue;
+          }
+        }
+      }
     }
   }
 

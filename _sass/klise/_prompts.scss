@@ -1,0 +1,145 @@
+// Prompts (Callouts)
+// These are applied to blockquotes using {: .prompt-info }, etc.
+
+blockquote {
+  &.prompt-info,
+  &.prompt-tip,
+  &.prompt-warning,
+  &.prompt-danger {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: left;
+    font-style: normal;
+    padding: 1.25rem 1.5rem;
+    border: none;
+    margin: 2rem 10px;
+    border-radius: 0.25rem;
+    opacity: 1;
+
+    &::before {
+      order: 1;
+      font-family: bootstrap-icons !important;
+      font-weight: normal !important;
+      display: inline-block;
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    &::after {
+      order: 2;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05rem;
+      line-height: 1;
+    }
+
+    p {
+      order: 3;
+      flex-basis: 100%;
+      margin: 0.5rem 0 0 0;
+      color: inherit;
+
+      & + p {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  &.prompt-info {
+    background-color: rgba(0, 123, 255, 0.08);
+    color: #0056b3;
+    &::before {
+      content: "\f431"; // bi-info-circle
+      color: #007bff;
+    }
+    &::after {
+      content: "Info";
+      color: #007bff;
+    }
+  }
+
+  &.prompt-tip {
+    background-color: rgba(40, 167, 69, 0.08);
+    color: #155724;
+    &::before {
+      content: "\f470"; // bi-lightbulb
+      color: #28a745;
+    }
+    &::after {
+      content: "Tip";
+      color: #28a745;
+    }
+  }
+
+  &.prompt-warning {
+    background-color: rgba(255, 193, 7, 0.08);
+    color: #856404;
+    &::before {
+      content: "\f33b"; // bi-exclamation-triangle
+      color: #856404;
+    }
+    &::after {
+      content: "Warning";
+      color: #856404;
+    }
+  }
+
+  &.prompt-danger {
+    background-color: rgba(220, 53, 69, 0.08);
+    color: #721c24;
+    &::before {
+      content: "\f337"; // bi-exclamation-octagon
+      color: #dc3545;
+    }
+    &::after {
+      content: "Danger";
+      color: #dc3545;
+    }
+  }
+
+  body[data-theme="dark"] & {
+    &.prompt-info {
+      background-color: rgba(0, 123, 255, 0.15);
+      color: #b3d7ff;
+      &::before {
+        color: #3391ff;
+      }
+      &::after {
+        color: #3391ff;
+      }
+    }
+    &.prompt-tip {
+      background-color: rgba(40, 167, 69, 0.15);
+      color: #b0e0bc;
+      &::before {
+        color: #34ce57;
+      }
+      &::after {
+        color: #34ce57;
+      }
+    }
+    &.prompt-warning {
+      background-color: rgba(255, 193, 7, 0.15);
+      color: #ffeeba;
+      &::before {
+        color: #ffdb6e;
+      }
+      &::after {
+        color: #ffdb6e;
+      }
+    }
+    &.prompt-danger {
+      background-color: rgba(220, 53, 69, 0.15);
+      color: #f8d7da;
+      &::before {
+        color: #ff5b6b;
+      }
+      &::after {
+        color: #ff5b6b;
+      }
+    }
+  }
+}

@@ -81,10 +81,7 @@ code {
 
 // Codeblock Theme (High-level Container)
 div.highlighter-rouge {
-  margin: 0 -27px 1.5rem;
-  @include media-query($on-mobile) {
-    margin: 0 calc(51% - 51vw) 1.5rem;
-  }
+  margin: 0 auto 1.5rem;
   border: 1px solid rgba(128,128,128,0.1);
   background-color: var(--syntax-bg);
   border-radius: 2px;
