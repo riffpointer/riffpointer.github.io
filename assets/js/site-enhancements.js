@@ -146,9 +146,9 @@
       snapshot.style.height = `${rect.height}px`;
       snapshot.style.margin = "0";
       
-      // Calculate dynamic scale factors
-      const scaleX = 28 / rect.width;
-      const scaleY = 28 / rect.height;
+      // Calculate dynamic scale factors to fit inside the 1.5px border (28 - 3 = 25)
+      const scaleX = 25 / rect.width;
+      const scaleY = 25 / rect.height;
       aniWrap.style.setProperty("--scale-x", scaleX);
       aniWrap.style.setProperty("--scale-y", scaleY);
 
@@ -164,13 +164,15 @@
       // Force a style calculation
       void aniWrap.offsetWidth;
       
+      // Cleanup flash
+      setTimeout(() => flash.remove(), 240);
+      
       // Trigger animation
       requestAnimationFrame(() => {
         aniWrap.classList.add("is-shrinking");
       });
 
-      // Cleanup and button success state
-      setTimeout(() => flash.remove(), 240);
+      // Cleanup snapshot after animation ends (800ms transition)
       setTimeout(() => {
         aniWrap.remove();
         // Button state - show after animation ends
