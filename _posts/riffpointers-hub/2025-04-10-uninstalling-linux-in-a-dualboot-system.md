@@ -35,3 +35,99 @@ Final step is to remove the partitions where you've installed Linux to. (You sho
 
 > I wrote this article solely for my own reference, thus I don't mention a lot of things here. If you think anything should be added or changed, please feel free to open a pull request :)
 {: .prompt-tip }
+
+## 4. Removing Grub
+
+## 4.1 Remove GRUB from Windows Boot Entries
+
+Even after restoring the Windows Boot Manager, GRUB entries can still remain in the UEFI firmware boot menu. You can remove them directly from Windows.
+
+### 4.1.1 Using `bcdedit`
+
+Open an elevated Command Prompt or PowerShell and run:
+
+```powershell
+bcdedit /enum firmware
+```
+
+This lists all UEFI firmware boot entries.
+
+Look for entries related to:
+
+* GRUB
+* Ubuntu
+* Fedora
+* Arch
+* Debian
+* Linux Boot Manager
+
+Example:
+
+```text
+Firmware Application (101fffff)
+--------------------------------
+identifier              {2c5b9d5c-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+description             ubuntu
+```
+
+Copy the identifier of the Linux/GRUB entry and delete it:
+
+```powershell
+bcdedit /delete {identifier}
+```
+
+Example:
+
+```powershell
+bcdedit /delete {2c5b9d5c-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+```
+
+---
+
+### 4.1.2 Remove GRUB EFI Files Manually
+
+Since the EFI partition is already mounted as `S:`, you can also remove leftover GRUB files manually.
+
+Open:
+
+```text
+S:\EFI\
+```
+
+You may see folders like:
+
+* `ubuntu`
+* `fedora`
+* `debian`
+* `arch`
+* `grub`
+
+Delete the folder corresponding to your Linux distro.
+
+Do NOT delete:
+
+* `Microsoft`
+* `Boot`
+
+Those are required for Windows booting.
+
+---
+
+### 4.1.3 Optional Cleanup
+
+After everything works correctly, remove the temporary EFI drive letter:
+
+```powershell
+diskpart
+```
+
+Then:
+
+```text
+list volume
+select volume <EFI volume number>
+remove letter=S
+exit
+```
+
+This hides the EFI partition again from Explorer.

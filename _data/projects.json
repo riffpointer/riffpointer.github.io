@@ -79,10 +79,22 @@
     "name": "Gurgle",
     "description": "The best search engine you'll ever use",
     "id": "gurgle",
-    "has_demo": false,
+    "has_demo": true,
     "tags": [
       "javascript",
       "gurgle"
+    ]
+  },
+  {
+    "name": "ivybook",
+    "description": "Markdown-based note taking app written in Python3 and PySide6",
+    "id": "ivybook",
+    "has_demo": false,
+    "tags": [
+      "python",
+      "pyside",
+      "desktop-app",
+      "ivybook"
     ]
   }
 ]
