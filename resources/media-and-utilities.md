@@ -5,9 +5,7 @@ layout: page
 excerpt: Tools for media work and lightweight utilities.
 ---
 
-## Media and utilities
+<meta http-equiv="refresh" content="0; url=/resources/?category=media">
+<script>window.location.replace("/resources/?category=media");</script>
 
-- [FFmpeg](https://ffmpeg.org/)
-- [ImageMagick](https://imagemagick.org/)
-- [Excalidraw](https://excalidraw.com/)
-- [Squoosh](https://squoosh.app/)
+If you are not redirected automatically, please click [here](/resources/?category=media).

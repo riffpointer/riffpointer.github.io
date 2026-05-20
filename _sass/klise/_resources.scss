@@ -1,11 +1,11 @@
-.project-controls-wrapper {
+.resources-controls {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 40px;
   width: 100%;
 
-  .project-search-wrapper {
+  .resources-search-wrapper {
     position: relative;
     width: 100%;
     height: 44px;
@@ -42,7 +42,7 @@
     }
   }
 
-  .project-categories {
+  .resources-categories {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -78,7 +78,7 @@
   }
 }
 
-.project-grid-new {
+.resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
@@ -86,31 +86,44 @@
   transition: opacity 0.25s ease;
 }
 
-.project-card-new {
+.resource-card {
   border: 1px solid rgba(128, 128, 128, 0.15);
   border-radius: 10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   background-color: rgba(118, 118, 118, 0.03);
+  text-decoration: none;
+  color: inherit;
   position: relative;
-  transition: border-color 0.22s ease,
+  transition: transform 0.22s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.22s ease,
+              box-shadow 0.22s ease,
               background-color 0.22s ease;
   overflow: hidden;
+
+  &::after {
+    display: none !important; /* Override standard link behavior */
+  }
 
   &:hover {
     border-color: rgba(0, 63, 255, 0.25);
     background-color: rgba(118, 118, 118, 0.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 
-    .project-arrow-new {
+    .resource-arrow {
       transform: translate(2px, -2px);
       color: $text-link-blue;
     }
-  }
+
+    .resource-icon-wrapper {
+      background-color: rgba(0, 63, 255, 0.1);
+      color: $text-link-blue;
+      transform: scale(1.05) rotate(5deg);
     }
   }
 
-  .project-header-new {
+  .resource-header {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -119,7 +132,7 @@
     padding-right: 20px;
   }
 
-  .project-icon-wrapper-new {
+  .resource-icon-wrapper {
     width: 36px;
     height: 36px;
     border-radius: 8px;
@@ -133,7 +146,7 @@
     flex-shrink: 0;
   }
 
-  .project-name-new {
+  .resource-name {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0;
@@ -141,23 +154,9 @@
     color: inherit;
     border: none;
     padding-bottom: 0;
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      
-      &::after {
-        display: none !important;
-      }
-
-      &:hover {
-        color: $text-link-blue;
-        text-decoration: underline;
-      }
-    }
   }
 
-  .project-arrow-new {
+  .resource-arrow {
     position: absolute;
     top: 2px;
     right: 0;
@@ -165,17 +164,9 @@
     color: $gray;
     opacity: 0.6;
     transition: transform 0.2s ease, color 0.2s ease;
-
-    &::after {
-      display: none !important;
-    }
-
-    &:hover {
-      opacity: 1;
-    }
   }
 
-  .project-desc-new {
+  .resource-desc {
     font-size: 0.88rem;
     color: $gray;
     line-height: 1.5;
@@ -183,13 +174,13 @@
     flex-grow: 1;
   }
 
-  .project-tags-new {
+  .resource-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 16px;
+    margin-top: auto;
 
-    .project-tag-new {
+    .resource-tag {
       font-size: 0.72rem;
       padding: 2px 8px;
       border-radius: 4px;
@@ -200,44 +191,9 @@
       letter-spacing: 0.02em;
     }
   }
-
-  .project-footer-new {
-    margin-top: auto;
-    border-top: 1px solid rgba(128, 128, 128, 0.1);
-    padding-top: 12px;
-    display: flex;
-    justify-content: flex-end;
-
-    .project-demo-btn-new {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border-radius: 6px;
-      background-color: $text-link-blue;
-      color: $white !important;
-      text-decoration: none;
-      transition: opacity 0.2s, filter 0.2s;
-
-      &::after {
-        display: none !important;
-      }
-
-      &:hover {
-        opacity: 0.9;
-        color: $white !important;
-      }
-
-      i {
-        font-size: 0.9rem;
-      }
-    }
-  }
 }
 
-.projects-not-found {
+.resources-not-found {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,15 +214,15 @@
   }
 }
 
-/* Hide classes */
-.project-card-new[hidden],
-.projects-not-found[hidden] {
+/* Hide utility classes */
+.resource-card[hidden],
+.resources-not-found[hidden] {
   display: none !important;
 }
 
 /* Dark mode overrides */
 [data-theme="dark"] {
-  .project-controls-wrapper {
+  .resources-controls {
     input[type="search"] {
       border-color: rgba(255, 255, 255, 0.1);
       background-color: rgba(255, 255, 255, 0.02);
@@ -278,7 +234,7 @@
       }
     }
 
-    .project-search-wrapper .search-icon {
+    .resources-search-wrapper .search-icon {
       color: $dark-gray;
     }
 
@@ -303,57 +259,46 @@
     }
   }
 
-  .project-card-new {
+  .resource-card {
     border-color: rgba(255, 255, 255, 0.08);
     background-color: rgba(255, 255, 255, 0.02);
 
     &:hover {
       border-color: rgba(255, 82, 119, 0.25);
       background-color: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
-      .project-name-new a:hover {
+      .resource-arrow {
         color: $dark-text-link-blue;
       }
 
-      .project-arrow-new {
-        color: $dark-text-link-blue;
-      }
-
-      .project-icon-wrapper-new {
+      .resource-icon-wrapper {
         background-color: rgba(255, 82, 119, 0.1);
         color: $dark-text-link-blue;
       }
     }
 
-    .project-icon-wrapper-new {
+    .resource-icon-wrapper {
       background-color: transparent;
       color: $dark-gray;
     }
 
-    .project-arrow-new {
+    .resource-arrow {
       color: $dark-gray;
     }
 
-    .project-desc-new {
+    .resource-desc {
       color: $dark-gray;
     }
 
-    .project-tags-new .project-tag-new {
+    .resource-tags .resource-tag {
       background-color: rgba(255, 255, 255, 0.04);
       border-color: rgba(255, 255, 255, 0.04);
       color: $dark-gray;
     }
-
-    .project-footer-new {
-      border-top-color: rgba(255, 255, 255, 0.08);
-
-      .project-demo-btn-new {
-        background-color: $dark-text-link-blue;
-      }
-    }
   }
 
-  .projects-not-found {
+  .resources-not-found {
     color: $dark-gray;
   }
 }

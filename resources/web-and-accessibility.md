@@ -5,9 +5,7 @@ layout: page
 excerpt: Core references for building accessible web pages.
 ---
 
-## Web and accessibility
+<meta http-equiv="refresh" content="0; url=/resources/?category=a11y">
+<script>window.location.replace("/resources/?category=a11y");</script>
 
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [W3C WAI](https://www.w3.org/WAI/)
-- [WebAIM](https://webaim.org/)
-- [Can I use](https://caniuse.com/)
+If you are not redirected automatically, please click [here](/resources/?category=a11y).

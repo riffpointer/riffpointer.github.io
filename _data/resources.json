@@ -1,0 +1,250 @@
+[
+  {
+    "name": "GitHub Profile",
+    "url": "https://github.com/riffpointer",
+    "description": "All the source code of the projects showcased on my channel.",
+    "category": "social",
+    "tags": ["profile", "code"],
+    "icon": "bi-github"
+  },
+  {
+    "name": "YouTube Channel",
+    "url": "https://youtube.com/@riffpointer",
+    "description": "Tech tutorials, project showcases, and coding videos.",
+    "category": "social",
+    "tags": ["videos", "creator"],
+    "icon": "bi-youtube"
+  },
+  {
+    "name": "Instagram",
+    "url": "https://instagram.com/riffpointer",
+    "description": "Short form dev content, behind the scenes, and updates.",
+    "category": "social",
+    "tags": ["social", "creator"],
+    "icon": "bi-instagram"
+  },
+  {
+    "name": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/",
+    "description": "The ultimate documentation and learning resource for HTML, CSS, and JS.",
+    "category": "coding",
+    "tags": ["reference", "web"],
+    "icon": "bi-globe"
+  },
+  {
+    "name": "Can I use",
+    "url": "https://caniuse.com/",
+    "description": "Up-to-date browser support tables for modern frontend web technologies.",
+    "category": "coding",
+    "tags": ["reference", "compatibility"],
+    "icon": "bi-check-circle"
+  },
+  {
+    "name": "DevDocs",
+    "url": "https://devdocs.io/",
+    "description": "Combines multiple API documentations in a fast, search-optimized interface.",
+    "category": "coding",
+    "tags": ["tool", "reference"],
+    "icon": "bi-file-earmark-code"
+  },
+  {
+    "name": "Bundlephobia",
+    "url": "https://bundlephobia.com/",
+    "description": "Find the cost and size of adding any npm package to your bundle.",
+    "category": "coding",
+    "tags": ["tool", "performance"],
+    "icon": "bi-box-seam"
+  },
+  {
+    "name": "Excalidraw",
+    "url": "https://excalidraw.com/",
+    "description": "A collaborative virtual whiteboard tool with a hand-drawn sketch feel.",
+    "category": "design",
+    "tags": ["tool", "diagrams"],
+    "icon": "bi-pencil-fill"
+  },
+  {
+    "name": "Squoosh",
+    "url": "https://squoosh.app/",
+    "description": "Google's image compression tool that lets you compare formats and sizes.",
+    "category": "design",
+    "tags": ["tool", "images"],
+    "icon": "bi-aspect-ratio"
+  },
+  {
+    "name": "SVG Repo",
+    "url": "https://www.svgrepo.com/",
+    "description": "Search and download from a library of over 500,000 free SVG vectors.",
+    "category": "design",
+    "tags": ["assets", "svg"],
+    "icon": "bi-image"
+  },
+  {
+    "name": "Coolors",
+    "url": "https://coolors.co/",
+    "description": "A super fast color palettes generator to kickstart UI and brand design.",
+    "category": "design",
+    "tags": ["tool", "colors"],
+    "icon": "bi-palette2"
+  },
+  {
+    "name": "Google Fonts",
+    "url": "https://fonts.google.com/",
+    "description": "Library of free, open-source web fonts and interactive designer tools.",
+    "category": "design",
+    "tags": ["assets", "typography"],
+    "icon": "bi-type"
+  },
+  {
+    "name": "Lucide Icons",
+    "url": "https://lucide.dev/",
+    "description": "Beautiful, consistent, and customizable open-source icon library.",
+    "category": "design",
+    "tags": ["assets", "icons"],
+    "icon": "bi-emoji-smile"
+  },
+  {
+    "name": "CSS-Tricks",
+    "url": "https://css-tricks.com/",
+    "description": "Daily articles and deep dives into CSS layouts, tips, and front-end development.",
+    "category": "coding",
+    "tags": ["guides", "css"],
+    "icon": "bi-magic"
+  },
+  {
+    "name": "Refactoring UI",
+    "url": "https://www.refactoringui.com/",
+    "description": "Excellent design guide and rules for developers to design beautiful interfaces.",
+    "category": "design",
+    "tags": ["guides", "ui-ux"],
+    "icon": "bi-layout-sidebar-inset"
+  },
+  {
+    "name": "FFmpeg",
+    "url": "https://ffmpeg.org/",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "category": "media",
+    "tags": ["tool", "cli"],
+    "icon": "bi-terminal"
+  },
+  {
+    "name": "ImageMagick",
+    "url": "https://imagemagick.org/",
+    "description": "Robust suite to create, edit, compose, or convert bitmap images.",
+    "category": "media",
+    "tags": ["tool", "cli"],
+    "icon": "bi-image-fill"
+  },
+  {
+    "name": "OBS Studio",
+    "url": "https://obsproject.com/",
+    "description": "Free and open source software for video recording and live streaming.",
+    "category": "media",
+    "tags": ["app", "recording"],
+    "icon": "bi-camera-video"
+  },
+  {
+    "name": "DaVinci Resolve",
+    "url": "https://www.blackmagicdesign.com/products/davinciresolve",
+    "description": "Professional video editing, color correction, and audio post-production app.",
+    "category": "media",
+    "tags": ["app", "video-editing"],
+    "icon": "bi-film"
+  },
+  {
+    "name": "Handbrake",
+    "url": "https://handbrake.fr/",
+    "description": "Open-source tool for converting video from nearly any format to modern codecs.",
+    "category": "media",
+    "tags": ["app", "transcoder"],
+    "icon": "bi-disc"
+  },
+  {
+    "name": "Audacity",
+    "url": "https://www.audacityteam.org/",
+    "description": "Easy-to-use, multi-track audio editor and recorder for Windows, macOS, and Linux.",
+    "category": "media",
+    "tags": ["app", "audio"],
+    "icon": "bi-mic"
+  },
+  {
+    "name": "Jekyll Documentation",
+    "url": "https://jekyllrb.com/docs/",
+    "description": "Guides and references for building Jekyll static websites and blogs.",
+    "category": "writing",
+    "tags": ["docs", "jekyll"],
+    "icon": "bi-book"
+  },
+  {
+    "name": "Liquid Documentation",
+    "url": "https://shopify.github.io/liquid/",
+    "description": "Reference docs for Liquid, the flexible template language used in Jekyll.",
+    "category": "writing",
+    "tags": ["docs", "templating"],
+    "icon": "bi-code-square"
+  },
+  {
+    "name": "Markdown Guide",
+    "url": "https://www.markdownguide.org/",
+    "description": "A comprehensive reference manual and cheat sheet for Markdown syntax.",
+    "category": "writing",
+    "tags": ["guides", "markdown"],
+    "icon": "bi-markdown"
+  },
+  {
+    "name": "GitHub Docs",
+    "url": "https://docs.github.com/",
+    "description": "Guides and developer documentations for using git and hosting on GitHub.",
+    "category": "writing",
+    "tags": ["docs", "github"],
+    "icon": "bi-journal-code"
+  },
+  {
+    "name": "StackEdit",
+    "url": "https://stackedit.io/",
+    "description": "In-browser Markdown editor with real-time rendering and cloud syncing.",
+    "category": "writing",
+    "tags": ["tool", "writing"],
+    "icon": "bi-textarea-resize"
+  },
+  {
+    "name": "Hemingway Editor",
+    "url": "https://hemingwayapp.com/",
+    "description": "An editor that identifies complex sentence structures to improve readability.",
+    "category": "writing",
+    "tags": ["tool", "writing"],
+    "icon": "bi-pen"
+  },
+  {
+    "name": "WebAIM",
+    "url": "https://webaim.org/",
+    "description": "Articles and tools providing practical web accessibility solutions.",
+    "category": "a11y",
+    "tags": ["reference", "a11y"],
+    "icon": "bi-universal-access"
+  },
+  {
+    "name": "W3C WAI",
+    "url": "https://www.w3.org/WAI/",
+    "description": "Standards and resources from the Web Accessibility Initiative.",
+    "category": "a11y",
+    "tags": ["reference", "standards"],
+    "icon": "bi-shield-check"
+  },
+  {
+    "name": "PageSpeed Insights",
+    "url": "https://pagespeed.web.dev/",
+    "description": "Google tool to analyze web performance and get suggestions to make pages faster.",
+    "category": "a11y",
+    "tags": ["tool", "performance"],
+    "icon": "bi-lightning-charge"
+  },
+  {
+    "name": "The A11y Project",
+    "url": "https://www.a11yproject.com/",
+    "description": "A community-driven checklist and set of resources to make web design accessible.",
+    "category": "a11y",
+    "tags": ["guides", "a11y"],
+    "icon": "bi-check-all"
+  }
+]

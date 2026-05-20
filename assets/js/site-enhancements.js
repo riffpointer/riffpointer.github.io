@@ -238,53 +238,159 @@
     dRoot.addEventListener("pointerleave", () => { lP = null; updD(); });
   }
 
-  const projectSearch = document.getElementById("search-input");
-  const projectGrid = document.getElementById("project-grid");
-  const viewToggle = document.getElementById("view-toggle");
-  const noProjectsFound = document.getElementById("no-projects-found");
+  // Projects search and filtering
+  const projectSearch = document.getElementById("project-search");
+  const projectGrid = document.getElementById("project-grid-new");
+  const projectCategories = document.getElementById("project-categories");
+  const projectsEmptyState = document.getElementById("projects-empty-state");
 
-  if (projectSearch && projectGrid && viewToggle) {
-    const cards = Array.from(document.querySelectorAll(".project-card"));
+  if (projectSearch && projectGrid && projectCategories) {
+    const cards = Array.from(projectGrid.querySelectorAll(".project-card-new"));
+    const categoryBtns = Array.from(projectCategories.querySelectorAll(".category-btn"));
+    let currentCategory = "all";
 
-    const updateView = (view) => {
-      const isList = view === "list";
-      projectGrid.classList.toggle("is-list", isList);
-      viewToggle.setAttribute("aria-pressed", isList ? "true" : "false");
-      viewToggle.setAttribute("aria-label", isList ? "Switch to grid view" : "Switch to list view");
-      viewToggle.setAttribute("title", isList ? "Switch to grid view" : "Switch to list view");
-      viewToggle.innerHTML = isList ? '<i class="bi bi-list" aria-hidden="true"></i>' : '<i class="bi bi-grid-fill" aria-hidden="true"></i>';
-    };
-
-    let currentView = "grid";
-    try {
-      currentView = localStorage.getItem("project-view") || "grid";
-    } catch (error) {}
-    updateView(currentView);
-
-    viewToggle.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      currentView = currentView === "grid" ? "list" : "grid";
-      updateView(currentView);
-      try {
-        localStorage.setItem("project-view", currentView);
-      } catch (error) {}
-    });
-
-    projectSearch.addEventListener("input", () => {
+    const filterProjects = () => {
       const searchTerm = projectSearch.value.toLowerCase().trim();
       let visibleCount = 0;
 
       cards.forEach((card) => {
-        const text = card.textContent.toLowerCase();
-        const isMatch = text.includes(searchTerm);
-        card.hidden = !isMatch;
-        if (isMatch) visibleCount++;
+        const cardCategory = card.getAttribute("data-category");
+        const cardText = card.textContent.toLowerCase();
+
+        const matchesCategory = currentCategory === "all" || cardCategory === currentCategory;
+        const matchesSearch = cardText.includes(searchTerm);
+
+        const isVisible = matchesCategory && matchesSearch;
+        card.hidden = !isVisible;
+
+        if (isVisible) {
+          visibleCount++;
+        }
       });
 
-      if (noProjectsFound) {
-        noProjectsFound.hidden = visibleCount !== 0;
+      if (projectsEmptyState) {
+        projectsEmptyState.hidden = visibleCount !== 0;
       }
+    };
+
+    // Category button click handlers
+    projectCategories.addEventListener("click", (event) => {
+      const btn = event.target.closest(".category-btn");
+      if (!btn) return;
+
+      categoryBtns.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      currentCategory = btn.getAttribute("data-category") || "all";
+      
+      // Update URL query parameter
+      try {
+        const url = new URL(window.location);
+        if (currentCategory === "all") {
+          url.searchParams.delete("category");
+        } else {
+          url.searchParams.set("category", currentCategory);
+        }
+        window.history.replaceState({}, "", url);
+      } catch (e) {}
+
+      filterProjects();
     });
+
+    // Search input handler
+    projectSearch.addEventListener("input", filterProjects);
+
+    // Check query params on load
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get("category");
+      if (catParam) {
+        const targetBtn = categoryBtns.find((b) => b.getAttribute("data-category") === catParam);
+        if (targetBtn) {
+          categoryBtns.forEach((b) => b.classList.remove("is-active"));
+          targetBtn.classList.add("is-active");
+          currentCategory = catParam;
+          filterProjects();
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Resources search and filtering
+  const resourcesSearch = document.getElementById("resources-search");
+  const resourcesGrid = document.getElementById("resources-grid");
+  const resourcesCategories = document.getElementById("resources-categories");
+  const resourcesEmptyState = document.getElementById("resources-empty-state");
+
+  if (resourcesSearch && resourcesGrid && resourcesCategories) {
+    const cards = Array.from(resourcesGrid.querySelectorAll(".resource-card"));
+    const categoryBtns = Array.from(resourcesCategories.querySelectorAll(".category-btn"));
+    let currentCategory = "all";
+
+    const filterResources = () => {
+      const searchTerm = resourcesSearch.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category");
+        const cardText = card.textContent.toLowerCase();
+
+        const matchesCategory = currentCategory === "all" || cardCategory === currentCategory;
+        const matchesSearch = cardText.includes(searchTerm);
+
+        const isVisible = matchesCategory && matchesSearch;
+        card.hidden = !isVisible;
+
+        if (isVisible) {
+          visibleCount++;
+        }
+      });
+
+      if (resourcesEmptyState) {
+        resourcesEmptyState.hidden = visibleCount !== 0;
+      }
+    };
+
+    // Category button click handlers
+    resourcesCategories.addEventListener("click", (event) => {
+      const btn = event.target.closest(".category-btn");
+      if (!btn) return;
+
+      categoryBtns.forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+
+      currentCategory = btn.getAttribute("data-category") || "all";
+      
+      // Update URL query parameter
+      try {
+        const url = new URL(window.location);
+        if (currentCategory === "all") {
+          url.searchParams.delete("category");
+        } else {
+          url.searchParams.set("category", currentCategory);
+        }
+        window.history.replaceState({}, "", url);
+      } catch (e) {}
+
+      filterResources();
+    });
+
+    // Search input handler
+    resourcesSearch.addEventListener("input", filterResources);
+
+    // Check query params on load
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get("category");
+      if (catParam) {
+        const targetBtn = categoryBtns.find((b) => b.getAttribute("data-category") === catParam);
+        if (targetBtn) {
+          categoryBtns.forEach((b) => b.classList.remove("is-active"));
+          targetBtn.classList.add("is-active");
+          currentCategory = catParam;
+          filterResources();
+        }
+      }
+    } catch (e) {}
   }
 })();

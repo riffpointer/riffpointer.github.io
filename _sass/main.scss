@@ -1,6 +1,6 @@
 // Fonts preferences
-$sans-family: Roboto, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-$mono-family: Consolas, "Liberation Mono", monospace;
+$sans-family: "Roboto", sans-serif;
+$mono-family: "Roboto", sans-serif;
 $base-font-size: 16px;
 $medium-font-size: $base-font-size * 0.938;
 $small-font-size: $base-font-size * 0.875;
@@ -61,4 +61,4 @@ $on-widescreen: 1152px;
 // Import sass files
 @import "klise/local-fonts", "klise/base", "klise/layout", "klise/post",
   "klise/miscellaneous", "klise/syntax", "klise/dark", "klise/projects",
-  "klise/command-palette", "klise/prompts";
+  "klise/command-palette", "klise/prompts", "klise/resources";

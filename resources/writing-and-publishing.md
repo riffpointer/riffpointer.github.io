@@ -5,9 +5,7 @@ layout: page
 excerpt: Docs and tooling for writing, markup, and publishing.
 ---
 
-## Writing and publishing
+<meta http-equiv="refresh" content="0; url=/resources/?category=writing">
+<script>window.location.replace("/resources/?category=writing");</script>
 
-- [Jekyll Documentation](https://jekyllrb.com/docs/)
-- [Liquid Documentation](https://shopify.github.io/liquid/)
-- [Markdown Guide](https://www.markdownguide.org/)
-- [GitHub Docs](https://docs.github.com/)
+If you are not redirected automatically, please click [here](/resources/?category=writing).
