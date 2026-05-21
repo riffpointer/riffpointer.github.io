@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: ["main"]
   schedule:
-    - cron: '30 1 * * 0' # Runs at 1:30 AM UTC every Sunday
+    - cron: '30 1 * * 0'  # Runs at 1:30 AM UTC every Sunday
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript-typescript', 'ruby' ]
+        language: ['javascript-typescript', 'ruby']
 
     steps:
       - name: Checkout repository
