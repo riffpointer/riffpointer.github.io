@@ -1,0 +1,55 @@
+<div class="wiki-container">
+  {% include wiki_sidebar.html %}
+  
+  <div class="wiki-content-area">
+    <div class="wiki-header-section">
+      <h2 class="wiki-title">{{ page.title }}</h2>
+      {% if page.excerpt %}
+        <p class="wiki-subtitle">{{ page.excerpt }}</p>
+      {% endif %}
+    </div>
+
+    <div class="wiki-search-wrapper">
+      <span class="wiki-search-icon">
+        <i class="bi bi-search" aria-hidden="true"></i>
+      </span>
+      <input 
+        type="search" 
+        class="wiki-search-input" 
+        id="wiki-search" 
+        placeholder="Search within this section..." 
+        aria-label="Search resources"
+        autocomplete="off"
+      >
+    </div>
+
+    <div id="wiki-empty-state" class="wiki-empty-state" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <i class="bi bi-search-heart" aria-hidden="true"></i>
+      <p>No resources found matching your search</p>
+    </div>
+
+    <div class="wiki-list" id="wiki-resources-list">
+      {%- assign category_resources = site.data.resources | where: "category", include.category -%}
+      {%- for item in category_resources -%}
+        <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+          <div class="wiki-item-icon">
+            <i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i>
+          </div>
+          <div class="wiki-item-content">
+            <div class="wiki-item-header">
+              <span class="wiki-item-title-link">
+                {{ item.name }}
+              </span>
+              <div class="wiki-item-tags">
+                {%- for tag in item.tags -%}
+                  <span class="wiki-tag">{{ tag }}</span>
+                {%- endfor -%}
+              </div>
+            </div>
+            <p class="wiki-item-desc">{{ item.description }}</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

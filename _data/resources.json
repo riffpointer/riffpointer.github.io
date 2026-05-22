@@ -246,5 +246,133 @@
     "category": "a11y",
     "tags": ["guides", "a11y"],
     "icon": "bi-check-all"
+  },
+  {
+    "name": "Supabase",
+    "url": "https://supabase.com/",
+    "description": "Open source Firebase alternative built on PostgreSQL with real-time subscriptions.",
+    "category": "database",
+    "tags": ["postgres", "backend", "db"],
+    "icon": "bi-database-fill"
+  },
+  {
+    "name": "Postman",
+    "url": "https://www.postman.com/",
+    "description": "API platform for building, testing, and designing APIs with a clean desktop/web interface.",
+    "category": "database",
+    "tags": ["api", "tool", "testing"],
+    "icon": "bi-send"
+  },
+  {
+    "name": "MongoDB Atlas",
+    "url": "https://www.mongodb.com/cloud/atlas",
+    "description": "Fully managed cloud database service for modern applications using NoSQL document models.",
+    "category": "database",
+    "tags": ["nosql", "cloud", "db"],
+    "icon": "bi-server"
+  },
+  {
+    "name": "JSONPlaceholder",
+    "url": "https://jsonplaceholder.typicode.com/",
+    "description": "Free fake online REST API for testing and prototyping frontend client requests.",
+    "category": "database",
+    "tags": ["api", "testing", "mock"],
+    "icon": "bi-code-square"
+  },
+  {
+    "name": "Vercel",
+    "url": "https://vercel.com/",
+    "description": "Platform for hosting frontend frameworks and static websites, optimized for Next.js.",
+    "category": "hosting",
+    "tags": ["hosting", "frontend", "serverless"],
+    "icon": "bi-triangle"
+  },
+  {
+    "name": "Netlify",
+    "url": "https://www.netlify.com/",
+    "description": "Web hosting and automation platform for modern web projects, featuring serverless functions.",
+    "category": "hosting",
+    "tags": ["hosting", "jamstack", "deploy"],
+    "icon": "bi-cloud"
+  },
+  {
+    "name": "Render",
+    "url": "https://render.com/",
+    "description": "Unified cloud platform to host apps, databases, static sites, cron jobs, and background workers.",
+    "category": "hosting",
+    "tags": ["hosting", "cloud", "paas"],
+    "icon": "bi-cpu"
+  },
+  {
+    "name": "GitHub Pages",
+    "url": "https://pages.github.com/",
+    "description": "Host static websites directly from your GitHub repository with automatic builds and custom domains.",
+    "category": "hosting",
+    "tags": ["hosting", "static", "git"],
+    "icon": "bi-github"
+  },
+  {
+    "name": "Google Search Console",
+    "url": "https://search.google.com/search-console/about",
+    "description": "Tools to monitor, maintain, and troubleshoot your site's presence in Google Search results.",
+    "category": "seo",
+    "tags": ["seo", "analytics", "google"],
+    "icon": "bi-search"
+  },
+  {
+    "name": "Google Analytics",
+    "url": "https://analytics.google.com/",
+    "description": "Web analytics service offered by Google to track and report website traffic.",
+    "category": "seo",
+    "tags": ["analytics", "traffic", "marketing"],
+    "icon": "bi-graph-up"
+  },
+  {
+    "name": "Ahrefs Free SEO Tools",
+    "url": "https://ahrefs.com/free-seo-tools",
+    "description": "Free SEO tools to audit your website, track backlinks, and find search keywords.",
+    "category": "seo",
+    "tags": ["seo", "tool", "keyword"],
+    "icon": "bi-key"
+  },
+  {
+    "name": "XML-Sitemaps",
+    "url": "https://www.xml-sitemaps.com/",
+    "description": "Generate standard XML sitemaps online to submit to search engines for indexation.",
+    "category": "seo",
+    "tags": ["seo", "sitemap", "tool"],
+    "icon": "bi-file-earmark-medical"
+  },
+  {
+    "name": "Let's Encrypt",
+    "url": "https://letsencrypt.org/",
+    "description": "A free, automated, and open certificate authority providing SSL/TLS encryption.",
+    "category": "security",
+    "tags": ["ssl", "certificate", "https"],
+    "icon": "bi-shield-fill-check"
+  },
+  {
+    "name": "Have I Been Pwned",
+    "url": "https://haveibeenpwned.com/",
+    "description": "Check if your email address or phone number is in any public data breach.",
+    "category": "security",
+    "tags": ["security", "audit", "breach"],
+    "icon": "bi-shield-slash"
+  },
+  {
+    "name": "Security Headers",
+    "url": "https://securityheaders.com/",
+    "description": "Fast and simple security scanner for evaluating HTTP response headers on a domain.",
+    "category": "security",
+    "tags": ["security", "audit", "headers"],
+    "icon": "bi-shield-check"
+  },
+  {
+    "name": "OWASP Top 10",
+    "url": "https://owasp.org/www-project-top-ten/",
+    "description": "Globally recognized reference document outlining the most critical web application security risks.",
+    "category": "security",
+    "tags": ["reference", "security", "owasp"],
+    "icon": "bi-book"
   }
 ]

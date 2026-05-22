@@ -316,81 +316,96 @@
     } catch (e) {}
   }
 
-  // Resources search and filtering
-  const resourcesSearch = document.getElementById("resources-search");
-  const resourcesGrid = document.getElementById("resources-grid");
-  const resourcesCategories = document.getElementById("resources-categories");
-  const resourcesEmptyState = document.getElementById("resources-empty-state");
+  // Wiki Search and Filtering
+  const wikiGlobalSearch = document.getElementById("wiki-global-search");
+  const wikiSearch = document.getElementById("wiki-search");
+  const wikiEmptyState = document.getElementById("wiki-empty-state");
 
-  if (resourcesSearch && resourcesGrid && resourcesCategories) {
-    const cards = Array.from(resourcesGrid.querySelectorAll(".resource-card"));
-    const categoryBtns = Array.from(resourcesCategories.querySelectorAll(".category-btn"));
-    let currentCategory = "all";
+  // 1. Global Wiki Search (Home page)
+  if (wikiGlobalSearch) {
+    const sections = Array.from(document.querySelectorAll(".wiki-home-section"));
 
-    const filterResources = () => {
-      const searchTerm = resourcesSearch.value.toLowerCase().trim();
+    const filterGlobalWiki = () => {
+      const query = wikiGlobalSearch.value.toLowerCase().trim();
+      let totalVisible = 0;
+
+      sections.forEach((section) => {
+        const sectionItems = Array.from(section.querySelectorAll(".wiki-item"));
+        let sectionVisibleCount = 0;
+
+        sectionItems.forEach((item) => {
+          const name = item.getAttribute("data-name") || "";
+          const desc = item.getAttribute("data-desc") || "";
+          const tags = item.getAttribute("data-tags") || "";
+          
+          const matches = name.includes(query) || desc.includes(query) || tags.includes(query);
+          item.hidden = !matches;
+          
+          if (matches) {
+            sectionVisibleCount++;
+            totalVisible++;
+          }
+        });
+
+        // Hide the entire section if no items match
+        section.hidden = sectionVisibleCount === 0;
+      });
+
+      if (wikiEmptyState) {
+        wikiEmptyState.hidden = totalVisible !== 0;
+      }
+    };
+
+    wikiGlobalSearch.addEventListener("input", filterGlobalWiki);
+  }
+
+  // 2. Section-specific Wiki Search (Category pages)
+  if (wikiSearch) {
+    const items = Array.from(document.querySelectorAll("#wiki-resources-list .wiki-item"));
+
+    const filterSectionWiki = () => {
+      const query = wikiSearch.value.toLowerCase().trim();
       let visibleCount = 0;
 
-      cards.forEach((card) => {
-        const cardCategory = card.getAttribute("data-category");
-        const cardText = card.textContent.toLowerCase();
+      items.forEach((item) => {
+        const name = item.getAttribute("data-name") || "";
+        const desc = item.getAttribute("data-desc") || "";
+        const tags = item.getAttribute("data-tags") || "";
 
-        const matchesCategory = currentCategory === "all" || cardCategory === currentCategory;
-        const matchesSearch = cardText.includes(searchTerm);
+        const matches = name.includes(query) || desc.includes(query) || tags.includes(query);
+        item.hidden = !matches;
 
-        const isVisible = matchesCategory && matchesSearch;
-        card.hidden = !isVisible;
-
-        if (isVisible) {
+        if (matches) {
           visibleCount++;
         }
       });
 
-      if (resourcesEmptyState) {
-        resourcesEmptyState.hidden = visibleCount !== 0;
+      if (wikiEmptyState) {
+        wikiEmptyState.hidden = visibleCount !== 0;
       }
     };
 
-    // Category button click handlers
-    resourcesCategories.addEventListener("click", (event) => {
-      const btn = event.target.closest(".category-btn");
-      if (!btn) return;
+    wikiSearch.addEventListener("input", filterSectionWiki);
+  }
 
-      categoryBtns.forEach((b) => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
+  // Sidebar nav horizontal scroll edge shadows (mobile chips)
+  const sidebarNav = document.querySelector(".wiki-sidebar-nav");
+  if (sidebarNav) {
+    const updateScrollShadows = () => {
+      const scrollLeft = sidebarNav.scrollLeft;
+      const maxScroll = sidebarNav.scrollWidth - sidebarNav.clientWidth;
+      const threshold = 2; // px tolerance for rounding
 
-      currentCategory = btn.getAttribute("data-category") || "all";
-      
-      // Update URL query parameter
-      try {
-        const url = new URL(window.location);
-        if (currentCategory === "all") {
-          url.searchParams.delete("category");
-        } else {
-          url.searchParams.set("category", currentCategory);
-        }
-        window.history.replaceState({}, "", url);
-      } catch (e) {}
+      const canScrollLeft = scrollLeft > threshold;
+      const canScrollRight = scrollLeft < maxScroll - threshold;
 
-      filterResources();
-    });
+      sidebarNav.classList.toggle("can-scroll-left", canScrollLeft);
+      sidebarNav.classList.toggle("can-scroll-right", canScrollRight);
+    };
 
-    // Search input handler
-    resourcesSearch.addEventListener("input", filterResources);
-
-    // Check query params on load
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const catParam = params.get("category");
-      if (catParam) {
-        const targetBtn = categoryBtns.find((b) => b.getAttribute("data-category") === catParam);
-        if (targetBtn) {
-          categoryBtns.forEach((b) => b.classList.remove("is-active"));
-          targetBtn.classList.add("is-active");
-          currentCategory = catParam;
-          filterResources();
-        }
-      }
-    } catch (e) {}
+    sidebarNav.addEventListener("scroll", updateScrollShadows, { passive: true });
+    // Run on load and on resize
+    updateScrollShadows();
+    window.addEventListener("resize", updateScrollShadows, { passive: true });
   }
 })();

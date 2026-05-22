@@ -1,0 +1,333 @@
+<div class="wiki-container">
+  {% include wiki_sidebar.html %}
+  
+  <div class="wiki-content-area">
+    <div class="wiki-header-section">
+      <h2 class="wiki-title">Resources</h2>
+      <p class="wiki-subtitle">A curated collection of web references, developer tools, design utilities, and content creation tools.</p>
+    </div>
+
+    <div class="wiki-search-wrapper">
+      <span class="wiki-search-icon">
+        <i class="bi bi-search" aria-hidden="true"></i>
+      </span>
+      <input 
+        type="search" 
+        class="wiki-search-input" 
+        id="wiki-global-search" 
+        placeholder="Search all resources..." 
+        aria-label="Search all resources"
+        autocomplete="off"
+      >
+    </div>
+
+    <div id="wiki-empty-state" class="wiki-empty-state" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <i class="bi bi-search-heart" aria-hidden="true"></i>
+      <p>No resources found matching your search</p>
+    </div>
+
+    <div class="wiki-home-groups" id="wiki-home-groups">
+      
+      <!-- Coding Section -->
+      <section class="wiki-home-section" data-category="coding">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-code-slash" aria-hidden="true"></i>
+          <a href="/resources/coding-and-dev/">Coding & Dev</a>
+        </h3>
+        <p class="wiki-section-desc">Reference links, developer tools, and framework documentation.</p>
+        <div class="wiki-list">
+          {%- assign coding_resources = site.data.resources | where: "category", "coding" -%}
+          {%- for item in coding_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Databases & APIs Section -->
+      <section class="wiki-home-section" data-category="database">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-database" aria-hidden="true"></i>
+          <a href="/resources/databases-and-apis/">Databases & APIs</a>
+        </h3>
+        <p class="wiki-section-desc">Relational and non-relational databases, API design, testing, and mocking tools.</p>
+        <div class="wiki-list">
+          {%- assign database_resources = site.data.resources | where: "category", "database" -%}
+          {%- for item in database_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Deployment & Hosting Section -->
+      <section class="wiki-home-section" data-category="hosting">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-cloud-arrow-up" aria-hidden="true"></i>
+          <a href="/resources/deployment-and-hosting/">Deployment & Hosting</a>
+        </h3>
+        <p class="wiki-section-desc">Cloud platforms, static hosting providers, and deployment/CI-CD utilities.</p>
+        <div class="wiki-list">
+          {%- assign hosting_resources = site.data.resources | where: "category", "hosting" -%}
+          {%- for item in hosting_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Design Section -->
+      <section class="wiki-home-section" data-category="design">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-palette" aria-hidden="true"></i>
+          <a href="/resources/design-and-ui/">Design & UI</a>
+        </h3>
+        <p class="wiki-section-desc">Colors, assets, typography, and layout tools.</p>
+        <div class="wiki-list">
+          {%- assign design_resources = site.data.resources | where: "category", "design" -%}
+          {%- for item in design_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Web & Accessibility Section -->
+      <section class="wiki-home-section" data-category="a11y">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
+          <a href="/resources/web-and-accessibility/">Web & Accessibility</a>
+        </h3>
+        <p class="wiki-section-desc">Standards, web audits, checklists, and compatibility lookup tools.</p>
+        <div class="wiki-list">
+          {%- assign a11y_resources = site.data.resources | where: "category", "a11y" -%}
+          {%- for item in a11y_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- SEO & Analytics Section -->
+      <section class="wiki-home-section" data-category="seo">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+          <a href="/resources/seo-and-analytics/">SEO & Analytics</a>
+        </h3>
+        <p class="wiki-section-desc">Search engine optimization, analytics platforms, search console trackers, and traffic auditors.</p>
+        <div class="wiki-list">
+          {%- assign seo_resources = site.data.resources | where: "category", "seo" -%}
+          {%- for item in seo_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Security & Cryptography Section -->
+      <section class="wiki-home-section" data-category="security">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-shield-lock" aria-hidden="true"></i>
+          <a href="/resources/security-and-cryptography/">Security & Cryptography</a>
+        </h3>
+        <p class="wiki-section-desc">SSL/TLS certificate checkers, vulnerability scanners, password checkers, and encryption tools.</p>
+        <div class="wiki-list">
+          {%- assign security_resources = site.data.resources | where: "category", "security" -%}
+          {%- for item in security_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Media & Utilities Section -->
+      <section class="wiki-home-section" data-category="media">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-camera-reels" aria-hidden="true"></i>
+          <a href="/resources/media-and-utilities/">Media & Utilities</a>
+        </h3>
+        <p class="wiki-section-desc">Video editors, audio tools, converters, and recorders.</p>
+        <div class="wiki-list">
+          {%- assign media_resources = site.data.resources | where: "category", "media" -%}
+          {%- for item in media_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Writing & Publishing Section -->
+      <section class="wiki-home-section" data-category="writing">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-pen" aria-hidden="true"></i>
+          <a href="/resources/writing-and-publishing/">Writing & Publishing</a>
+        </h3>
+        <p class="wiki-section-desc">Jekyll guides, Liquid templates, editors, and markdown cheat sheets.</p>
+        <div class="wiki-list">
+          {%- assign writing_resources = site.data.resources | where: "category", "writing" -%}
+          {%- for item in writing_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      <!-- Bookmarks & Socials Section -->
+      <section class="wiki-home-section" data-category="social">
+        <h3 class="wiki-section-title">
+          <i class="bi bi-bookmark-star" aria-hidden="true"></i>
+          <a href="/resources/bookmarks/">Bookmarks</a>
+        </h3>
+        <p class="wiki-section-desc">Official channels, code profiles, and external bookmarks.</p>
+        <div class="wiki-list">
+          {%- assign social_resources = site.data.resources | where: "category", "social" -%}
+          {%- for item in social_resources -%}
+            <a href="{{ item.url }}" target="_blank" rel="noopener" class="wiki-item" data-name="{{ item.name | downcase }}" data-desc="{{ item.description | downcase }}" data-tags="{% for tag in item.tags %}{{ tag | downcase }} {% endfor %}">
+              <div class="wiki-item-icon"><i class="{{ item.icon | default: 'bi-link-45deg' }}" aria-hidden="true"></i></div>
+              <div class="wiki-item-content">
+                <div class="wiki-item-header">
+                  <span class="wiki-item-title-link">
+                    {{ item.name }}
+                  </span>
+                  <div class="wiki-item-tags">
+                    {%- for tag in item.tags -%}
+                      <span class="wiki-tag">{{ tag }}</span>
+                    {%- endfor -%}
+                  </div>
+                </div>
+                <p class="wiki-item-desc">{{ item.description }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>

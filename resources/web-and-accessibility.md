@@ -1,11 +1,8 @@
 ---
-title: Web and accessibility
+title: Web & Accessibility
 permalink: /resources/web-and-accessibility/
 layout: page
-excerpt: Core references for building accessible web pages.
+category: a11y
+excerpt: Standards, web audits, checklists, and compatibility lookup tools.
 ---
-
-<meta http-equiv="refresh" content="0; url=/resources/?category=a11y">
-<script>window.location.replace("/resources/?category=a11y");</script>
-
-If you are not redirected automatically, please click [here](/resources/?category=a11y).
+{% include wiki_page_content.html category="a11y" %}

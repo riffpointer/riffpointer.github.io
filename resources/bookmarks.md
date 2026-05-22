@@ -2,10 +2,7 @@
 title: Bookmarks
 permalink: /resources/bookmarks/
 layout: page
-excerpt: Saved links and reading notes.
+category: social
+excerpt: Official channels, code profiles, and external bookmarks.
 ---
-
-<meta http-equiv="refresh" content="0; url=/resources/">
-<script>window.location.replace("/resources/");</script>
-
-If you are not redirected automatically, please click [here](/resources/).
+{% include wiki_page_content.html category="social" %}

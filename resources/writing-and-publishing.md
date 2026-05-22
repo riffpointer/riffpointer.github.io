@@ -1,11 +1,8 @@
 ---
-title: Writing and publishing
+title: Writing & Publishing
 permalink: /resources/writing-and-publishing/
 layout: page
-excerpt: Docs and tooling for writing, markup, and publishing.
+category: writing
+excerpt: Jekyll guides, Liquid templates, editors, and markdown cheat sheets.
 ---
-
-<meta http-equiv="refresh" content="0; url=/resources/?category=writing">
-<script>window.location.replace("/resources/?category=writing");</script>
-
-If you are not redirected automatically, please click [here](/resources/?category=writing).
+{% include wiki_page_content.html category="writing" %}
