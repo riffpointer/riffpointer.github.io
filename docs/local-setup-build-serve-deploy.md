@@ -16,6 +16,42 @@ Optional:
 - Node.js, if you want to run the CI checks locally
 - Visual Studio Build Tools on Windows, if native gems need compilation
 
+### Linux install commands
+
+To install the above prerequisites, you may use the following commands:
+
+#### Ubuntu / Debian
+
+```bash
+sudo apt update
+sudo apt install -y git ruby-full build-essential libffi-dev nodejs npm
+sudo gem install bundler
+```
+
+#### Fedora / Red Hat / CentOS / AlmaLinux
+
+```bash
+sudo dnf install -y git ruby ruby-devel gcc-c++ make libffi-devel nodejs npm
+sudo gem install bundler
+```
+
+#### Arch Linux / Manjaro
+
+```bash
+sudo pacman -Syu --needed git ruby base-devel libffi nodejs npm
+sudo gem install bundler
+```
+
+#### openSUSE
+
+```bash
+sudo zypper refresh
+sudo zypper install -y git ruby ruby-devel gcc-c++ make libffi-devel nodejs npm
+sudo gem install bundler
+```
+
+If you already have Bundler installed, you can skip the `gem install bundler` step. Use your distro's package manager or Ruby version manager if you prefer to install Ruby via `rbenv`, `rvm`, or similar.
+
 ## Clone The Repository
 
 ```powershell
