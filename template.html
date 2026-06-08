@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 16px;
+        line-height: 1.6;
+        word-wrap: break-word;
+        padding: 2rem;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    img { max-width: 100%; height: auto; display: block; margin: 1em 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { border: 1px solid #88888833; padding: 8px 13px; }
+    tr:nth-child(even) { background-color: #88888811; }
+    pre { border-radius: 6px; padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; }
+    code { font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; font-size: 85%; margin: 0; padding: 0.2em 0.4em; border-radius: 6px; }
+    pre > code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; }
+    blockquote { border-left: 0.25em solid #dfe2e5; padding: 0 1em; margin: 0 0 1.6em 0; }
+
+    /* GitHub Light */
+    body.github-light { color: #24292e; background-color: #ffffff; }
+    body.github-light pre { background-color: #f6f8fa; }
+    body.github-light code { background-color: rgba(27,31,35,0.05); }
+    body.github-light blockquote { border-left-color: #dfe2e5; color: #6a737d; }
+    body.github-light a { color: #0366d6; text-decoration: none; }
+    body.github-light a:hover { text-decoration: underline; }
+    body.github-light h1, body.github-light h2 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+
+    /* GitHub Dark */
+    body.github-dark { color: #c9d1d9; background-color: #0d1117; }
+    body.github-dark pre { background-color: #161b22; }
+    body.github-dark code { background-color: rgba(240,246,252,0.15); }
+    body.github-dark blockquote { border-left-color: #30363d; color: #8b949e; }
+    body.github-dark a { color: #58a6ff; text-decoration: none; }
+    body.github-dark a:hover { text-decoration: underline; }
+    body.github-dark h1, body.github-dark h2 { border-bottom: 1px solid #21262d; padding-bottom: 0.3em; }
+
+    /* Solarized Light */
+    body.solarized-light { color: #586e75; background-color: #fdf6e3; }
+    body.solarized-light pre { background-color: #eee8d5; }
+    body.solarized-light code { background-color: #eee8d5; }
+    body.solarized-light blockquote { border-left-color: #93a1a1; color: #93a1a1; }
+    body.solarized-light a { color: #268bd2; text-decoration: none; }
+    body.solarized-light h1, body.solarized-light h2 { border-bottom: 1px solid #93a1a1; padding-bottom: 0.3em; }
+
+    /* Dracula */
+    body.dracula { color: #f8f8f2; background-color: #282a36; }
+    body.dracula pre { background-color: #44475a; }
+    body.dracula code { background-color: #1e1f29; }
+    body.dracula blockquote { border-left-color: #6272a4; color: #6272a4; }
+    body.dracula a { color: #ff79c6; text-decoration: none; }
+    body.dracula h1, body.dracula h2 { border-bottom: 1px solid #44475a; padding-bottom: 0.3em; }
+
+    /* Monokai */
+    body.monokai { color: #f8f8f2; background-color: #272822; }
+    body.monokai pre { background-color: #383830; }
+    body.monokai code { background-color: #383830; }
+    body.monokai blockquote { border-left-color: #75715e; color: #75715e; }
+    body.monokai a { color: #f92672; text-decoration: none; }
+    body.monokai h1, body.monokai h2 { border-bottom: 1px solid #383830; padding-bottom: 0.3em; }
+
+    /* Nord */
+    body.nord { color: #d8dee9; background-color: #2e3440; }
+    body.nord pre { background-color: #3b4252; }
+    body.nord code { background-color: #3b4252; }
+    body.nord blockquote { border-left-color: #4c566a; color: #4c566a; }
+    body.nord a { color: #88c0d0; text-decoration: none; }
+    body.nord h1, body.nord h2 { border-bottom: 1px solid #3b4252; padding-bottom: 0.3em; }
+
+    /* One Dark */
+    body.one-dark { color: #abb2bf; background-color: #282c34; }
+    body.one-dark pre { background-color: #2c313a; }
+    body.one-dark code { background-color: #2c313a; }
+    body.one-dark blockquote { border-left-color: #5c6370; color: #5c6370; }
+    body.one-dark a { color: #61afef; text-decoration: none; }
+    body.one-dark h1, body.one-dark h2 { border-bottom: 1px solid #2c313a; padding-bottom: 0.3em; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.min.css" id="hljs-theme">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/highlight.min.js"></script>
+</head>
+<body class="github-light">
+  <div id="content"></div>
+  <script>
+    if (typeof marked !== 'undefined') {
+        marked.setOptions({
+            gfm: true,
+            breaks: true,
+            highlight: function(code, lang) {
+                if (typeof hljs !== 'undefined') {
+                    if (lang && hljs.getLanguage(lang)) {
+                        try {
+                            return hljs.highlight(code, { language: lang }).value;
+                        } catch (__) {}
+                    }
+                    return hljs.highlightAuto(code).value;
+                }
+                return code;
+            }
+        });
+    }
+    
+    function parseSimpleMarkdown(md) {
+        let html = md;
+        // Escape HTML
+        html = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        // Headers
+        html = html.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+        html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+        html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+        html = html.replace(/^#### (.*)$/gm, "<h4>$1</h4>");
+        html = html.replace(/^##### (.*)$/gm, "<h5>$1</h5>");
+        html = html.replace(/^###### (.*)$/gm, "<h6>$1</h6>");
+        // Bold / Italic
+        html = html.replace(/\\*\\*(.*?)\\*\\*/g, "<strong>$1</strong>");
+        html = html.replace(/\\*(.*?)\\*/g, "<em>$1</em>");
+        // Inline code
+        html = html.replace(/`(.*?)`/g, "<code>$1</code>");
+        // Code blocks
+        html = html.replace(/```(.*?)\\n([\\s\\S]*?)```/g, "<pre><code>$2</code></pre>");
+        // Links
+        html = html.replace(/\\[(.*?)\\]\\((.*?)\\)/g, "<a href='$2'>$1</a>");
+        // Paragraphs / Newlines
+        html = html.replace(/\\n/g, "<br>");
+        return html;
+    }
+    
+    function updatePreview(md) {
+        if (typeof marked !== 'undefined' && typeof marked.parse === 'function') {
+            document.getElementById('content').innerHTML = marked.parse(md);
+        } else {
+            document.getElementById('content').innerHTML = parseSimpleMarkdown(md);
+        }
+        if (window.renderMathInElement) {
+            renderMathInElement(document.getElementById('content'), {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        }
+    }
+    
+    function setTheme(themeName) {
+        document.body.className = themeName;
+        // Switch highlight.js theme based on markdown theme dark/light mode
+        let hljsTheme = document.getElementById('hljs-theme');
+        if (themeName.includes('dark') || themeName === 'dracula' || themeName === 'monokai') {
+            hljsTheme.href = "https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.min.css";
+        } else {
+            hljsTheme.href = "https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.min.css";
+        }
+    }
+  </script>
+</body>
+</html>
+

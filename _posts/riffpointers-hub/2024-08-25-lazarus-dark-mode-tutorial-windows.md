@@ -1,8 +1,9 @@
 ---
-title: "Lazarus Dark Mode Tutorial (Windows)"
-date: 2024-08-25 12:00:00 +05:30
-categories: ["Lazarus", "Windows", "Tutorial", "FreePascal"]
-tags: ["lazarus", "dark-mode", "tutorial", "pascal", "fpc", "windows", "ide"]
+layout: post
+title: Lazarus Dark Mode Tutorial (Windows)
+date: "2024-08-25 12:00:00 +05:30"
+categories: [Lazarus, Windows, Tutorial, FreePascal]
+tags: [lazarus, "dark-mode", tutorial, pascal, fpc, windows, ide]
 ---
 
 Hey there, fellow developer! If you're like me and spend hours coding away in Lazarus, you know that a bright white screen can be a bit much for the eyes. Today is a great day because I'm going to help you bring some stylish dark mode goodness to your Lazarus IDE and your own LCL applications on Windows!

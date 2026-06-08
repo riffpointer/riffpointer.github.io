@@ -4,6 +4,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import sys
 import webbrowser
 from dataclasses import dataclass, field
@@ -16,7 +17,7 @@ try:
 except ImportError:  # pragma: no cover
     winreg = None
 
-from PySide6.QtCore import QMimeData, QSortFilterProxyModel, Qt
+from PySide6.QtCore import QMimeData, QSortFilterProxyModel, Qt, QTimer
 from PySide6.QtGui import QAction, QColor, QKeySequence, QPalette, QUndoCommand, QUndoStack
 from PySide6.QtWidgets import (
     QApplication,
@@ -1077,7 +1078,7 @@ class MainWindow(QMainWindow):
         self.table.customContextMenuRequested.connect(self.show_context_menu)
         self.table.horizontalHeader().setStretchLastSection(True)
         self.table.horizontalHeader().setSectionsClickable(True)
-        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Interactive)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeToContents)
@@ -1985,6 +1986,21 @@ class MainWindow(QMainWindow):
                 return
         event.accept()
 
+    def showEvent(self, event) -> None:
+        super().showEvent(event)
+        self.adjust_column_widths()
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self.adjust_column_widths()
+
+    def adjust_column_widths(self) -> None:
+        table_width = self.table.width()
+        if table_width > 100:
+            target_width = int(table_width * 0.33)
+            if self.table.columnWidth(0) < target_width:
+                self.table.setColumnWidth(0, target_width)
+
 
 def main() -> int:
     app = QApplication(sys.argv)
@@ -1992,6 +2008,12 @@ def main() -> int:
     app.setOrganizationName(ORG_NAME)
     settings = SettingsManager()
     apply_theme(app, str(settings.values.get("theme", "auto")))
+
+    # Gracefully exit on KeyboardInterrupt (Ctrl+C)
+    signal.signal(signal.SIGINT, lambda sig, frame: app.quit())
+    timer = QTimer()
+    timer.start(200)
+    timer.timeout.connect(lambda: None)
 
     window = MainWindow()
     window.show()

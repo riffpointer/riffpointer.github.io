@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "Markdown Testing"
-date: 2026-05-14 10:00:00 +05:30
+title: Markdown Testing
+date: "2026-05-14 10:00:00 +05:30"
 categories: [markdown, testing, reference]
 tags: [markdown, latex, code]
-description: A reference post for testing Markdown, LaTeX, code, and rich content rendering.
-usemathjax: true
 ---
 
 This post is a compact test page for common Markdown features, LaTeX rendering, syntax highlighting, and mixed HTML content.

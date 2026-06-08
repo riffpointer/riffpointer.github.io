@@ -1,8 +1,9 @@
 ---
-title: "Uninstalling Linux in a dualboot system"
-date: 2025-04-10 12:00:00 +05:30
-categories: ["Linux", "Windows"]
-tags: ["linux", "uninstall", "dualboot", "windows", "os"]
+layout: post
+title: Uninstalling Linux in a dualboot system
+date: "2025-04-10 12:00:00 +05:30"
+categories: [Linux, Windows]
+tags: [linux, uninstall, dualboot, windows, os]
 ---
 
 In this article I'm going to show you how to uninstall any Linux distribution from your Linux-Windows dualboot setup.

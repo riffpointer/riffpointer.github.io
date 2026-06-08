@@ -7,3 +7,4 @@ klise-*.gem
 Gemfile.lock
 /tools/project_manager/__pycache__
 .markdownlint-cli2.jsonc
+/tools/posts_manager/__pycache__
