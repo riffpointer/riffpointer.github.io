@@ -10,5 +10,10 @@ This site is based on the [Klisé](https://github.com/piharpi/jekyll-klise) Jeky
 ## Development
 See [Local Setup, Build, Serve, and Deploy](docs/local-setup-build-serve-deploy.md) for the local workflow and deployment path.
 
+Detailed OS-specific guides:
+- [Windows Development Setup](docs/windows-development-setup.md)
+- [Ubuntu / Debian Setup](docs/ubuntu-setup.md)
+
+
 ## License
 Licensed under the [MIT License](LICENSE)

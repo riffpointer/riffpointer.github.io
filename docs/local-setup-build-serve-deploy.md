@@ -121,3 +121,8 @@ If the workflow fails, fix the reported issue locally, rebuild, and push again.
 ## Windows Notes
 
 If you are setting up on Windows, the repository also has a dedicated guide in [Windows Development Setup](windows-development-setup.md) with OS-specific installation steps and troubleshooting.
+
+## Ubuntu / Debian Notes
+
+If you are setting up on Ubuntu or a Debian-based Linux distribution, the repository also has a dedicated guide in [Ubuntu/Debian Setup](ubuntu-setup.md) with OS-specific installation steps and troubleshooting.
+
