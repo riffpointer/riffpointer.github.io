@@ -24,8 +24,8 @@ group :jekyll_plugins do
   gem 'jekyll-postfiles', '~> 3.1'
 end
 
-gem "jekyll-sass-converter", "~> 2.2.0"
-gem "sassc", "~> 2.4"
+gem "jekyll-sass-converter", "~> 3.0"
+gem "sass-embedded"
 
 gem "csv"
 gem "base64"
